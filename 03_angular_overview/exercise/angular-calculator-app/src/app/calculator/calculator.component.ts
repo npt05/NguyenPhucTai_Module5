@@ -6,34 +6,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./calculator.component.css']
 })
 export class CalculatorComponent implements OnInit {
-  firstNumber: number;
-  secondNumber: number;
-  result: string;
-  operator: any;
+  public result: number;
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  caculate() {
-    switch (this.operator) {
-      case '+':
-        this.result = (Number(this.firstNumber) + Number(this.secondNumber)) + '';
+  public calculator(numberOne: string, numberTwo: string, operator: string): number {
+    const numOne: number = parseInt(numberOne);
+    const numTwo: number = parseInt(numberTwo);
+    switch (operator) {
+      case '+' :
+        this.result = numOne + numTwo;
         break;
       case '-':
-        this.result = (this.firstNumber - this.secondNumber) + '';
+        this.result = numOne - numTwo;
         break;
       case '*':
-        this.result = (this.firstNumber * this.secondNumber) + '';
+        this.result = numOne * numTwo;
         break;
       case '/':
-        if (Number(this.secondNumber) === 0) {
-          this.result = 'Không thể chia cho 0';
-          break;
-        } else {
-          this.result = (this.firstNumber / this.secondNumber) + '';
-          break;
-        }
+        this.result = numOne / numTwo;
+        break;
     }
+    return this.result;
   }
 }
