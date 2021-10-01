@@ -1,0 +1,13 @@
+<h2>Progress Bar</h2>
+
+<div class="progress-bar-container" [style.backgroundColor]="backgroundColor">
+  <div class="progress" [ngStyle]="{
+  backgroundColor: progressColor,
+  width: progress + '%'
+  }"></div>
+</div>
+Bước 6: đặt style cho progress-bar.component.css như sau:
+
+.progress {
+height: 20px;
+}

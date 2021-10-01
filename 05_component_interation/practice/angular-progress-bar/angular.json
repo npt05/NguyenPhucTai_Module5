@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Furama-Angular": {
+    "angular-progress-bar": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Furama-Angular",
+            "outputPath": "dist/angular-progress-bar",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -24,16 +24,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css",
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "node_modules/@fortawesome/fontawesome-free/css/all.min.css",
-              "node_modules/@material/snackbar/dist/mdc.snackbar.css",
-              "node_modules/@material/dialog/dist/mdc.dialog.css"
+              "src/styles.css"
             ],
-            "scripts": [
-              "node_modules/jquery/dist/jquery.min.js",
-              "node_modules/bootstrap/dist/js/bootstrap.js"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -69,18 +62,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Furama-Angular:build"
+            "browserTarget": "angular-progress-bar:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Furama-Angular:build:production"
+              "browserTarget": "angular-progress-bar:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Furama-Angular:build"
+            "browserTarget": "angular-progress-bar:build"
           }
         },
         "test": {
@@ -117,19 +110,19 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Furama-Angular:serve"
+            "devServerTarget": "angular-progress-bar:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Furama-Angular:serve:production"
+              "devServerTarget": "angular-progress-bar:serve:production"
             }
           }
         }
       }
     }
   },
-  "defaultProject": "Furama-Angular",
+  "defaultProject": "angular-progress-bar",
   "cli": {
-    "analytics": "3723e55c-1a35-4563-8d8f-e6cf747fc4f5"
+    "analytics": "9cc0ad2b-f3cf-4c21-a681-1548617a3764"
   }
 }
