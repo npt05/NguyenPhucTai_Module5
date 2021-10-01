@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output, SimpleChanges, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+
 
 @Component({
   selector: 'app-countdown-timer',
@@ -6,67 +7,46 @@ import {Component, EventEmitter, Input, Output, SimpleChanges, OnInit} from '@an
   styleUrls: ['./countdown-timer.component.css']
 })
 export class CountdownTimerComponent implements OnInit {
-  message = '';
-  remainingTime: number;
-  @Input()
-  seconds = 11;
-  @Output()
-  finish = new EventEmitter<boolean>();
-  private intervalId = 0;
-
-  ngOnChanges(changes: SimpleChanges) {
-    if ('seconds' in changes) {
-      let v = changes.seconds.currentValue;
-      v = typeof v === 'undefined' ? 11 : v;
-      const vFixed = Number(v);
-      this.seconds = Number.isNaN(vFixed) ? 11 : vFixed;
-    }
-  }
+  @Input() seconds: number;
+  @Input() message = 'bắt đầu :';
+  @Output() finish  = new EventEmitter<number>();
+  private interval: number;
+  check = true;
 
   constructor() {
   }
 
-  clearTimer() {
-    clearInterval(this.intervalId);
-  }
-
   ngOnInit() {
-    this.reset();
   }
-
-  reset() {
-    this.clearTimer();
-    this.remainingTime = this.seconds;
-    this.message = `Click start button to start the Countdown`;
-  }
-
-  ngOnDestroy() {
-    this.clearTimer();
-  }
-
   start() {
+    this.message = 'còn lại :';
     this.countDown();
-    if (this.remainingTime <= 0) {
-      this.remainingTime = this.seconds;
-    }
+    this.check = false;
+  }
+
+  clearTimer() {
+    clearInterval(this.interval);
   }
 
   stop() {
+    this.message = 'tạm dừng :';
     this.clearTimer();
-    this.message = `Holding at T-${this.remainingTime} seconds`;
+    this.check = true;
+  }
+
+  reset() {
+    this.message = 'con lại :';
+    this.seconds = 10;
+    this.stop();
   }
 
   private countDown() {
-    this.clearTimer();
-    this.intervalId = window.setInterval(() => {
-      this.remainingTime -= 1;
-      if (this.remainingTime === 0) {
-        this.message = 'Blast off!';
-        this.clearTimer();
-        this.finish.emit(true);
-      } else {
-        this.message = `T-${this.remainingTime} seconds and counting`;
+    this.interval = setInterval(() => {
+      this.seconds = this.seconds - 1;
+      if (this.seconds === 0) {
+        this.stop();
       }
+      this.finish.emit(this.seconds);
     }, 1000);
   }
 }

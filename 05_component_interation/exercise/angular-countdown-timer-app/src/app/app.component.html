@@ -1,1 +1,7 @@
-<app-countdown-timer></app-countdown-timer>
+
+<input  type="text" [(ngModel)]="seconds">
+<app-countdown-timer (finish)="countDown($event)" [seconds]="seconds" [message]="message"></app-countdown-timer>
+<div class="timer">
+  <span class="timer-text">{{ seconds }}</span>
+</div>
+<p>{{ message }} {{seconds}}</p>
