@@ -53,6 +53,7 @@
     <table class="table table-bordered table-striped">
       <thead>
       <tr class="table-primary" style="text-align: center">
+        <th>STT</th>
         <th>Name</th>
         <th>Id Card</th>
         <th>Salary</th>
@@ -67,15 +68,16 @@
       </thead>
 
       <tbody>
-      <tr style="text-align: center">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let employee of employees; let i = index" style="text-align: center">
+        <td>{{i+1}}</td>
+        <td>{{employee.employeeName}}</td>
+        <td>{{employee.employeeIdCard}}</td>
+        <td>{{employee.employeeSalary}}</td>
+        <td>{{employee.employeePhone}}</td>
+        <td>{{employee.employeeEmail}}</td>
+        <td>{{employee.employeeAdress}}</td>
+        <td>{{employee.employeePosition}}</td>
+        <td>{{employee.employeeDivition}}</td>
         <td>
           <a>
             <button type="submit" class="btn btn-info">

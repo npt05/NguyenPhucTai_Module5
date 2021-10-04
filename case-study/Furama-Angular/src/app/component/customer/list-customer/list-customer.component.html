@@ -1,6 +1,3 @@
-
-
-
 <div>
   <div style=" display:inline-block;  margin-left: 105px; margin-bottom: 5px">
     <a>
@@ -59,16 +56,15 @@
         <th>Delete</th>
       </tr>
       </thead>
-
       <tbody>
-      <tr style="text-align: center">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let customer of customers; let i = index" style="text-align: center">
+        <td>{{i+1}}</td>
+        <td>{{customer.customerCode}}</td>
+        <td>{{customer.customerType}}</td>
+        <td>{{customer.customername}}</td>
+        <td>{{customer.customerPhone}}</td>
+        <td>{{customer.customerEmail}}</td>
+        <td>{{customer.customerAdress}}</td>
         <td>
           <a>
             <button type="submit" class="btn btn-info">

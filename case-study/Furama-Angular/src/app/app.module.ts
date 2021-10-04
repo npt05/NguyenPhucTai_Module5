@@ -17,6 +17,9 @@ import { ListEmployeeComponent } from './component/employee/list-employee/list-e
 import { CreateServiceComponent } from './component/service/create-service/create-service.component';
 import { EditServiceComponent } from './component/service/edit-service/edit-service.component';
 import { ListServiceComponent } from './component/service/list-service/list-service.component';
+import { NavbarComponent } from './component/home/navbar/navbar.component';
+import { FooterComponent } from './component/home/footer/footer.component';
+import { BodyComponent } from './component/home/body/body.component';
 
 
 @NgModule({
@@ -36,6 +39,9 @@ import { ListServiceComponent } from './component/service/list-service/list-serv
     CreateServiceComponent,
     EditServiceComponent,
     ListServiceComponent,
+    NavbarComponent,
+    FooterComponent,
+    BodyComponent,
   ],
   imports: [
     BrowserModule,
