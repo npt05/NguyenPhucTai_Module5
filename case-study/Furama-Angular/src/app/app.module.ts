@@ -20,6 +20,7 @@ import { ListServiceComponent } from './component/service/list-service/list-serv
 import { NavbarComponent } from './component/home/navbar/navbar.component';
 import { FooterComponent } from './component/home/footer/footer.component';
 import { BodyComponent } from './component/home/body/body.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -43,10 +44,11 @@ import { BodyComponent } from './component/home/body/body.component';
     FooterComponent,
     BodyComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

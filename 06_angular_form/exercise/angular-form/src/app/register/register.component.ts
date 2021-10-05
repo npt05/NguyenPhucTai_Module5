@@ -39,5 +39,4 @@ export class RegisterComponentComponent implements OnInit {
   onSubmit() {
     console.log(this.formGroup);
   }
-
 }

@@ -54,7 +54,7 @@
   <div class="tabl">
     <table class="table table-bordered table-striped">
       <thead>
-      <tr style="text-align: center" class="table-dark">
+      <tr  style="text-align: center" class="table-dark">
         <th>STT</th>
         <th>Start date</th>
         <th>End date</th>
@@ -66,13 +66,13 @@
       </thead>
 
       <tbody>
-      <tr style="text-align: center">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let contract of contracts; let i = index" style="text-align: center">
+        <td>{{i+1}}</td>
+        <td>{{contract.contractStartDate}}</td>
+        <td>{{contract.contractEndDate}}</td>
+        <td>{{contract.contractTotalMoney}}</td>
+        <td>{{contract.customer}}</td>
+        <td>{{contract.service}}</td>
         <td>
           <a>
             <button type="submit" class="btn btn-info">

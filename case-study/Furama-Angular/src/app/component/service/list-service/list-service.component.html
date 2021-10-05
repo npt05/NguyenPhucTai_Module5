@@ -64,13 +64,13 @@
       </thead>
 
       <tbody>
-      <tr style="text-align: center">
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+      <tr *ngFor="let service of services; let i = index" style="text-align: center">
+        <td>{{i+1}}</td>
+        <td>{{service.serviceName}}</td>
+        <td>{{service.rentType}}</td>
+        <td>{{service.serviceType}}</td>
+        <td>{{service.serviceArea}}</td>
+        <td>{{service.numberOfFloors}}</td>
         <td>
           <a>
             <button type="submit" class="btn btn-info">
