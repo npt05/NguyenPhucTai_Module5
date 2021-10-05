@@ -9,9 +9,9 @@ function comparePassword(check: AbstractControl) {
 }
 
 @Component({
-  selector: 'app-register-component',
-  templateUrl: './register-component.component.html',
-  styleUrls: ['./register-component.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
 
 export class RegisterComponentComponent implements OnInit {
