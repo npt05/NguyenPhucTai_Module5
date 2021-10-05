@@ -26,12 +26,13 @@
         <div class="form-group">
           <label>Customer Type</label>
           <select formControlName="customerType" class="form-control">
-            <option selected disabled value="">Choose...</option>
-            <option value="Diamond">Diamond</option>
-            <option value="Platinum">Platinum</option>
-            <option value="Gold">Gold</option>
-            <option value="Silver">Silver</option>
-            <option value="Member">Member</option>
+<!--            <option selected disabled value="">Choose...</option>-->
+<!--            <option value="Diamond">Diamond</option>-->
+<!--            <option value="Platinum">Platinum</option>-->
+<!--            <option value="Gold">Gold</option>-->
+<!--            <option value="Silver">Silver</option>-->
+<!--            <option value="Member">Member</option>-->
+            <opttion  *ngFor="let customerType of customerTypeList" [ngValue]="customerType.id">{{customerType.name}}</opttion>
           </select>
           <span class="validate" *ngIf="formGroup.get('customerType').invalid && formGroup.get('customerType').touched">
             Vui lòng chọn loại khách hàng!
@@ -111,7 +112,8 @@
         <div class="form-group ">
           <label>Email</label>
           <input formControlName="customerEmail" type="text" class="form-control"/>
-          <span class="validate" *ngIf="formGroup.get('customerEmail').invalid && formGroup.get('customerEmail').touched">
+          <span class="validate"
+                *ngIf="formGroup.get('customerEmail').invalid && formGroup.get('customerEmail').touched">
             Email không đúng định dạng!
           </span>
         </div>
@@ -120,7 +122,8 @@
         <div class="form-group">
           <label>Address</label>
           <input formControlName="customerAdress" type="text" class="form-control"/>
-          <span class="validate" *ngIf="formGroup.get('customerAdress').invalid && formGroup.get('customerAdress').touched">
+          <span class="validate"
+                *ngIf="formGroup.get('customerAdress').invalid && formGroup.get('customerAdress').touched">
             Vui lòng nhập địa chỉ!
           </span>
         </div>

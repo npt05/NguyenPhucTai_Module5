@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/forms'
+import {CustomerType} from '../../../../modules/CustomerType';
 
 @Component({
   selector: 'app-create-customer',
@@ -7,7 +8,13 @@ import {AbstractControl, FormBuilder, FormGroup, Validators} from '@angular/form
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent implements OnInit {
-  customerTypeList: String[] =['Diamond', 'Platinum', 'Gold', 'Silver', 'Member'];
+  customerType1 = new CustomerType(1, 'Diamond');
+  customerType2 = new CustomerType(2, 'Platinum');
+  customerType3 = new CustomerType(3, 'Gold');
+  customerType4 = new CustomerType(4, 'Silver');
+  customerType5 = new CustomerType(5, 'Member');
+  customerTypeList: CustomerType[] = [this.customerType1, this.customerType2, this.customerType3, this.customerType4, this.customerType5];
+
   formGroup: FormGroup;
 
   constructor(private formBuilder: FormBuilder) { }

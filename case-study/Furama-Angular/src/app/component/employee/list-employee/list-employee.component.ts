@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {Employee} from "../../../../modules/Employee";
+import {Position} from '../../../../modules/Position';
+import {Divition} from '../../../../modules/Divition';
+import {Education} from '../../../../modules/Education';
 
 @Component({
   selector: 'app-list-employee',
@@ -8,20 +11,35 @@ import {Employee} from "../../../../modules/Employee";
 })
 export class ListEmployeeComponent implements OnInit {
 
-  employees: Employee[] = [
-    {employeeName: "Hoàng Quang", employeeIdCard: "123456789", employeeEmail: "quanghoang@gmail.com", employeeAdress: "Đà Nẵng",
-    employeePhone: "0909162847", employeeSalary: 250000, employeePosition: "Phục vụ", employeeDivition: "Sale-Marketing",
-    employeeEducation: "Đại học"},
-    {employeeName: "Liên Giang", employeeIdCard: "028483749", employeeEmail: "gianglien@gmail.com", employeeAdress: "Đà Nẵng",
-      employeePhone: "0910372844", employeeSalary: 320000, employeePosition: "Quản lý", employeeDivition: "Hành Chính",
-      employeeEducation: "Đại học"},
-    {employeeName: "Mỹ Tú", employeeIdCard: "937038344", employeeEmail: "tumy@gmail.com", employeeAdress: "Bình Dương",
-      employeePhone: "0919967817", employeeSalary: 243000, employeePosition: "Chuyên viên", employeeDivition: "Sale-Marketing",
-      employeeEducation: "Đại học"},
-    {employeeName: "Võ Tuấn", employeeIdCard: "102382947", employeeEmail: "tuanvo@gmail.com", employeeAdress: "Huế",
-      employeePhone: "0903092492", employeeSalary: 170000, employeePosition: "Phục vụ", employeeDivition: "Phục vụ",
-      employeeEducation: "Trung cấp"}
-  ]
+  position1 = new Position(1,'Lễ Tân');
+  position2 = new Position(2,'Phục vụ');
+  position3 = new Position(3,'Chuyên viên');
+  position4 = new Position(4,'Giám sát');
+  position5 = new Position(5,'Quản lý');
+  position6 = new Position(6,'Giám đốc');
+  positions: Position[] = [this.position1, this.position2, this.position3, this.position4, this.position5, this.position6];
+
+  divition1 = new Divition(1, 'Sale-Marketing');
+  divition2 = new Divition(2, 'Hành Chính');
+  divition3 = new Divition(3, 'Phục vụ');
+  divition4 = new Divition(4, 'Quản lý');
+  divitions: Divition[] = [this.divition1, this.divition2, this.divition3, this.divition4];
+
+  education1 = new Education(1, 'Trung cấp');
+  education2 = new Education(2, 'Cao Đẳng');
+  education3 = new Education(3, 'Đại học');
+  education4 = new Education(4, 'Sau đại học');
+  educations: Education[] = [this.education1, this.education2, this.education3, this.education4];
+
+  employee1 = new Employee(1, 'Hải Yến', '139384937', 'haiyen@gmail.com',
+    '0918379274', 1230345, 'Đà Nẵng', this.position3, this.divition2, this.education3);
+  employee2 = new Employee(2, 'Phương Linh', '345934267', 'linhphuong@gmail.com',
+    '0900389579', 1567698, 'Đà Nẵng', this.position1, this.divition1, this.education3);
+  employee3 = new Employee(3, 'Diệu Chi', '258543055', 'chidieu@gmail.com',
+    '0918028478', 2387656, 'Đà Nẵng', this.position4, this.divition4, this.education3);
+  employee4 = new Employee(4, 'Hải Đăng', '903791738', 'haidang@gmail.com',
+    '0909726395', 3334675, 'Đà Nẵng', this.position5, this.divition4, this.education3);
+  employees: Employee[] = [this.employee1, this.employee2, this.employee3, this.employee4];
   constructor() { }
 
   ngOnInit(): void {
