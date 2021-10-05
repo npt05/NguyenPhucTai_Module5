@@ -1,6 +1,0 @@
-<app-rating-bar-component [value]="iRatingUnit.value"></app-rating-bar-component>
-<span *ngFor="let active of iRatingUnit.active"
-      (click)="tich(active)"
-      [style]="{background: iRatingUnit.value >= active ? 'gold':'white'}">
-{{active}}
-</span>

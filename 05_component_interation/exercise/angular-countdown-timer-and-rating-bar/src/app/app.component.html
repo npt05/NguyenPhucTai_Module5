@@ -1,0 +1,17 @@
+
+<input  type="text" [(ngModel)]="seconds">
+<app-countdown-timer (finish)="countDown($event)" [seconds]="seconds" [message]="message"></app-countdown-timer>
+<div class="timer">
+  <span class="timer-text">{{ seconds }}</span>
+</div>
+<p>{{ message }} {{seconds}}</p>
+
+
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+
+<!--<app-rating-bar-component [value]="iRatingUnit.value"></app-rating-bar-component>-->
+<!--<span *ngFor="let active of iRatingUnit.active"-->
+<!--      (click)="tich(active)"-->
+<!--      [style]="{background: iRatingUnit.value >= active ? 'gold':'white'}">-->
+<!--{{active}}-->
+<!--</span>-->

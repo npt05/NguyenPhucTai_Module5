@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {IRatingUnit} from './i-rating-unit';
 
 @Component({
@@ -7,6 +7,15 @@ import {IRatingUnit} from './i-rating-unit';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  titles = 'countdown-timer';
+  seconds = 0;
+  message = 'bắt đầu :';
+
+
+  countDown(second: number) {
+    this.seconds = second;
+  }
+
   title = 'angular-rating-bar';
   iRatingUnit: IRatingUnit = {
     value: 3,
