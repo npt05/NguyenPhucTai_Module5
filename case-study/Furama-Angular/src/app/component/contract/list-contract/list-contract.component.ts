@@ -7,7 +7,7 @@ import {Contract} from '../../../../modules/Contract';
   styleUrls: ['./list-contract.component.css']
 })
 export class ListContractComponent implements OnInit {
-  
+
   contracts: Contract[] = [];
   constructor() { }
 

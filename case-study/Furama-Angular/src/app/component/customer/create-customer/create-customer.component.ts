@@ -8,6 +8,7 @@ import {CustomerType} from '../../../../modules/CustomerType';
   styleUrls: ['./create-customer.component.css']
 })
 export class CreateCustomerComponent implements OnInit {
+
   customerType1 = new CustomerType(1, 'Diamond');
   customerType2 = new CustomerType(2, 'Platinum');
   customerType3 = new CustomerType(3, 'Gold');

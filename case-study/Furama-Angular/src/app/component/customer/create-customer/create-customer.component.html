@@ -25,14 +25,14 @@
       <div class="col-4">
         <div class="form-group">
           <label>Customer Type</label>
-          <select formControlName="customerType" class="form-control">
+          <select class="form-control" formControlName="customerType">
 <!--            <option selected disabled value="">Choose...</option>-->
 <!--            <option value="Diamond">Diamond</option>-->
 <!--            <option value="Platinum">Platinum</option>-->
 <!--            <option value="Gold">Gold</option>-->
 <!--            <option value="Silver">Silver</option>-->
 <!--            <option value="Member">Member</option>-->
-            <opttion  *ngFor="let customerType of customerTypeList" [ngValue]="customerType.id">{{customerType.name}}</opttion>
+            <option  *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.name}}</option>
           </select>
           <span class="validate" *ngIf="formGroup.get('customerType').invalid && formGroup.get('customerType').touched">
             Vui lòng chọn loại khách hàng!
@@ -49,8 +49,7 @@
         </div>
       </div>
       <div class="col-1"></div>
-    </div>
-    <div class="row">
+
       <div class="col-1"></div>
       <div class="col-3">
         <div class="form-group ">

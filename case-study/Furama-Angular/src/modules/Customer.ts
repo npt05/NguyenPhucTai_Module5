@@ -12,7 +12,6 @@ export class Customer {
   customerBirthday: String;
   customerType: CustomerType;
 
-
   constructor(customerId: number, customerCode: String, customername: String, customerGender: String, customerPhone: String, customerEmail: String, customerIdCard: String, customerAdress: String, customerBirthday: String, customerType: CustomerType) {
     this.customerId = customerId;
     this.customerCode = customerCode;
