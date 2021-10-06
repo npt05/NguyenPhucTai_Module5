@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms'
 import {CustomerType} from '../../../../modules/CustomerType';
+import {CustomerTypeService} from '../../../service/customer-type/customer-type.service';
+import {CustomerService} from '../../../service/customer/customer.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-create-customer',
@@ -9,19 +12,15 @@ import {CustomerType} from '../../../../modules/CustomerType';
 })
 export class CreateCustomerComponent implements OnInit {
 
-  customerType1 = new CustomerType(1, 'Diamond');
-  customerType2 = new CustomerType(2, 'Platinum');
-  customerType3 = new CustomerType(3, 'Gold');
-  customerType4 = new CustomerType(4, 'Silver');
-  customerType5 = new CustomerType(5, 'Member');
-  customerTypeList: CustomerType[] = [this.customerType1, this.customerType2, this.customerType3, this.customerType4, this.customerType5];
+  customerFormGroup: FormGroup;
 
-  formGroup: FormGroup;
-
-  constructor(private formBuilder: FormBuilder) { }
-
+  constructor(private formBuilder: FormBuilder,
+              private customerType: CustomerTypeService,
+              private customerSevice: CustomerService,
+              private router: Router) { }
+  customerTypeList = this.customerType.getAll();
   ngOnInit(): void {
-    this.formGroup = this.formBuilder.group({
+    this.customerFormGroup = this.formBuilder.group({
       customerCode: ['', [Validators.required, Validators.pattern('^KH-\\d{4}$')]],
       customerName: ['',Validators.required],
       customerBirthday: ['',Validators.required],
@@ -35,6 +34,10 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.formGroup.value);
+    console.log(this.customerFormGroup.value);
+    if(this.customerFormGroup.valid){
+      this.customerSevice.createCustomer(this.customerFormGroup.value);
+      this.router.navigateByUrl("/customer");
+    }
   }
 }

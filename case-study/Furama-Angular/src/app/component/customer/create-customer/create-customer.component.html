@@ -1,5 +1,5 @@
 <div>
-  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <form [formGroup]="customerFormGroup" (ngSubmit)="onSubmit()">
     <div class="row">
       <div class="col-3"></div>
       <div class="col-6">
@@ -15,10 +15,10 @@
         <div class="form-group">
           <label>Customer Code</label>
           <input type="text" formControlName="customerCode" class="form-control"/>
-          <div class="validate" *ngIf="formGroup.get('customerCode').invalid && formGroup.get('customerCode').touched">
-            <span *ngIf="formGroup.get('customerCode').hasError('required')">Vui lòng nhập mã khách hàng!</span>
+          <div class="validate" *ngIf="customerFormGroup.get('customerCode').invalid && customerFormGroup.get('customerCode').touched">
+            <span *ngIf="customerFormGroup.get('customerCode').hasError('required')">Vui lòng nhập mã khách hàng!</span>
             <span
-              *ngIf="formGroup.get('customerCode').hasError('pattern')">Mã khách hàng không đúng định dạng(KH-XXXX)!</span>
+              *ngIf="customerFormGroup.get('customerCode').hasError('pattern')">Mã khách hàng không đúng định dạng(KH-XXXX)!</span>
           </div>
         </div>
       </div>
@@ -28,7 +28,7 @@
           <select class="form-control" formControlName="customerType">
             <option  *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.name}}</option>
           </select>
-          <span class="validate" *ngIf="formGroup.get('customerType').invalid && formGroup.get('customerType').touched">
+          <span class="validate" *ngIf="customerFormGroup.get('customerType').invalid && customerFormGroup.get('customerType').touched">
             Vui lòng chọn loại khách hàng!
           </span>
         </div>
@@ -37,7 +37,7 @@
         <div class="form-group">
           <label>Customer Name</label>
           <input formControlName="customerName" type="text" class="form-control"/>
-          <span class="validate" *ngIf="formGroup.get('customerName').invalid && formGroup.get('customerName').touched">
+          <span class="validate" *ngIf="customerFormGroup.get('customerName').invalid && customerFormGroup.get('customerName').touched">
             Tên khách hàng không được để trống!
           </span>
         </div>
@@ -50,7 +50,7 @@
           <label>Birthday</label>
           <input formControlName="customerBirthday" type="date" class="form-control"/>
           <span class="validate"
-                *ngIf="formGroup.get('customerBirthday').invalid && formGroup.get('customerBirthday').touched">
+                *ngIf="customerFormGroup.get('customerBirthday').invalid && customerFormGroup.get('customerBirthday').touched">
             Vui lòng nhập ngày sinh!
           </span>
         </div>
@@ -65,7 +65,7 @@
             <option value="Other">Other</option>
           </select>
           <span class="validate"
-                *ngIf="formGroup.get('customerGender').invalid && formGroup.get('customerGender').touched">
+                *ngIf="customerFormGroup.get('customerGender').invalid && customerFormGroup.get('customerGender').touched">
             Vui lòng chọn giới tính!
           </span>
         </div>
@@ -75,10 +75,10 @@
           <label>Id Card</label>
           <input formControlName="customerIdCard" type="text" class="form-control"/>
           <div class="validate"
-               *ngIf="formGroup.get('customerIdCard').invalid && formGroup.get('customerIdCard').touched">
-            <span *ngIf="formGroup.get('customerIdCard').hasError('required')">Vui lòng nhập Id Card</span>
+               *ngIf="customerFormGroup.get('customerIdCard').invalid && customerFormGroup.get('customerIdCard').touched">
+            <span *ngIf="customerFormGroup.get('customerIdCard').hasError('required')">Vui lòng nhập Id Card</span>
             <span
-              *ngIf="formGroup.get('customerIdCard').hasError('pattern')">Id Card không đúng định dạng!</span>
+              *ngIf="customerFormGroup.get('customerIdCard').hasError('pattern')">Id Card không đúng định dạng!</span>
           </div>
         </div>
       </div>
@@ -91,11 +91,11 @@
           <label>Phone Number</label>
           <input formControlName="customerPhone" type="text" class="form-control"/>
           <div class="validate"
-               *ngIf="formGroup.get('customerPhone').invalid && formGroup.get('customerPhone').touched">
-            <span *ngIf="formGroup.get('customerPhone').hasError('required')">
+               *ngIf="customerFormGroup.get('customerPhone').invalid && customerFormGroup.get('customerPhone').touched">
+            <span *ngIf="customerFormGroup.get('customerPhone').hasError('required')">
               Vui lòng nhập số điện thoại
             </span>
-            <span *ngIf="formGroup.get('customerPhone').hasError('pattern')">
+            <span *ngIf="customerFormGroup.get('customerPhone').hasError('pattern')">
               Số điện thoại không đúng định dạng!
             </span>
           </div>
@@ -106,7 +106,7 @@
           <label>Email</label>
           <input formControlName="customerEmail" type="text" class="form-control"/>
           <span class="validate"
-                *ngIf="formGroup.get('customerEmail').invalid && formGroup.get('customerEmail').touched">
+                *ngIf="customerFormGroup.get('customerEmail').invalid && customerFormGroup.get('customerEmail').touched">
             Email không đúng định dạng!
           </span>
         </div>
@@ -116,7 +116,7 @@
           <label>Address</label>
           <input formControlName="customerAdress" type="text" class="form-control"/>
           <span class="validate"
-                *ngIf="formGroup.get('customerAdress').invalid && formGroup.get('customerAdress').touched">
+                *ngIf="customerFormGroup.get('customerAdress').invalid && customerFormGroup.get('customerAdress').touched">
             Vui lòng nhập địa chỉ!
           </span>
         </div>
@@ -172,3 +172,4 @@
     </div>
   </form>
 </div>
+<app-footer></app-footer>

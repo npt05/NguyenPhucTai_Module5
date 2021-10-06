@@ -1,9 +1,9 @@
 import {CustomerType} from './CustomerType';
 
 export class Customer {
-  customerId: number;
+  customerId: String;
   customerCode: String;
-  customername: String;
+  customerName: String;
   customerGender: String;
   customerPhone: String;
   customerEmail: String;
@@ -12,10 +12,10 @@ export class Customer {
   customerBirthday: String;
   customerType: CustomerType;
 
-  constructor(customerId: number, customerCode: String, customername: String, customerGender: String, customerPhone: String, customerEmail: String, customerIdCard: String, customerAdress: String, customerBirthday: String, customerType: CustomerType) {
+  constructor(customerId: String, customerCode: String, customerName: String, customerGender: String, customerPhone: String, customerEmail: String, customerIdCard: String, customerAdress: String, customerBirthday: String, customerType: CustomerType) {
     this.customerId = customerId;
     this.customerCode = customerCode;
-    this.customername = customername;
+    this.customerName = customerName;
     this.customerGender = customerGender;
     this.customerPhone = customerPhone;
     this.customerEmail = customerEmail;
@@ -24,4 +24,5 @@ export class Customer {
     this.customerBirthday = customerBirthday;
     this.customerType = customerType;
   }
+
 }
