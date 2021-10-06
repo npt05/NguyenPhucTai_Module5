@@ -26,12 +26,6 @@
         <div class="form-group">
           <label>Customer Type</label>
           <select class="form-control" formControlName="customerType">
-<!--            <option selected disabled value="">Choose...</option>-->
-<!--            <option value="Diamond">Diamond</option>-->
-<!--            <option value="Platinum">Platinum</option>-->
-<!--            <option value="Gold">Gold</option>-->
-<!--            <option value="Silver">Silver</option>-->
-<!--            <option value="Member">Member</option>-->
             <option  *ngFor="let customerType of customerTypeList" [ngValue]="customerType">{{customerType.name}}</option>
           </select>
           <span class="validate" *ngIf="formGroup.get('customerType').invalid && formGroup.get('customerType').touched">

@@ -15,17 +15,13 @@ export class ListCustomerComponent implements OnInit {
   customerType4 = new CustomerType(4, 'Silver');
   customerType5 = new CustomerType(5, 'Member');
 
-  // @ts-ignore
-  customer1 = new Customer('KH-0001', 'Hoàng Long', 'Nam', '0902839472',
+  customer1 = new Customer(1,'KH-0001', 'Hoàng Long', 'Nam', '0902839472',
     'longhoang@gmail.com', '123456789', 'Hà Nội', '2021-10-15', this.customerType1);
-  // @ts-ignore
-  customer2 = new Customer('KH-0002', 'Hữu Tài', 'Nam', '0912483476',
+  customer2 = new Customer(2,'KH-0002', 'Hữu Tài', 'Nam', '0912483476',
     'huutai@gmail.com', '101856379', 'Huế', '2021-08-22', this.customerType2);
-  // @ts-ignore
-  customer3 = new Customer('KH-0003', 'Võ Tuấn', 'Nam', '0912027426',
+  customer3 = new Customer(3,'KH-0003', 'Võ Tuấn', 'Nam', '0912027426',
     'tuanvo@gmail.com', '340816786', 'Quảng Nam', '2021-12-09', this.customerType3);
-  // @ts-ignore
-  customer4 = new Customer('KH-0004', 'Kim Anh', 'Nữ', '0902686391',
+  customer4 = new Customer(4,'KH-0004', 'Kim Anh', 'Nữ', '0902686391',
     'anhkim@gmail.com', '358794658', 'Đà Nẵng', '2021-07-17', this.customerType4);
   customers: Customer[] = [this.customer1, this.customer2, this.customer3, this.customer4];
   customerTypeList: CustomerType[] = [this.customerType1, this.customerType2, this.customerType3, this.customerType4, this.customerType5];
