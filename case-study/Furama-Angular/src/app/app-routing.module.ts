@@ -5,6 +5,7 @@ import {ListEmployeeComponent} from './component/employee/list-employee/list-emp
 import {NavbarComponent} from './component/home/navbar/navbar.component';
 import {CreateCustomerComponent} from './component/customer/create-customer/create-customer.component';
 import {EditCustomerComponent} from './component/customer/edit-customer/edit-customer.component';
+import {CreateEmployeeComponent} from './component/employee/create-employee/create-employee.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   {path: "customer", component: ListCustomerComponent},
   {path: "customer/create", component: CreateCustomerComponent},
   {path: "customer/edit/:id", component: EditCustomerComponent},
-  {path: "employee", component: ListEmployeeComponent}
+  {path: "employee", component: ListEmployeeComponent},
+  {path: "employee/create", component: CreateEmployeeComponent},
 ];
 
 @NgModule({

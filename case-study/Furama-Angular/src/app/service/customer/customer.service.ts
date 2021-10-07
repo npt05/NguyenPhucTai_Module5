@@ -42,7 +42,7 @@ export class CustomerService {
   }
 
   createCustomer(customer: Customer) {
-    this.customers.unshift(customer);
+    this.customers.push(customer);
   }
 
   findById(id: String): Customer {
