@@ -1,21 +1,36 @@
 import { Injectable } from '@angular/core';
-import {CustomerType} from '../../../modules/CustomerType';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {CustomerType} from '../../../model/customer/CustomerType';
+import {Customer} from '../../../model/customer/Customer';
+
+const API_URL = 'http://localhost:3000/customerType';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerTypeService {
 
-  customerType1 = new CustomerType(1, 'Diamond');
-  customerType2 = new CustomerType(2, 'Platinum');
-  customerType3 = new CustomerType(3, 'Gold');
-  customerType4 = new CustomerType(4, 'Silver');
-  customerType5 = new CustomerType(5, 'Member');
+  constructor(private http: HttpClient) {
+  }
 
-  customerTypeList: CustomerType[] = [this.customerType1, this.customerType2, this.customerType3, this.customerType4, this.customerType5];
-  constructor() { }
+  getAll(): Observable<CustomerType[]> {
+    return this.http.get<CustomerType[]>(API_URL);
+  }
 
-  getAll(){
-    return this.customerTypeList
+  save(customerType): Observable<CustomerType> {
+    return this.http.post<CustomerType>(API_URL, customerType);
+  }
+
+  findById(id: number) {
+    return this.http.get<CustomerType>(`${API_URL}/${id}`);
+  }
+
+  update(id: number, customerType: CustomerType): Observable<CustomerType> {
+    return this.http.put<CustomerType>(`${API_URL}/${id}`, customerType);
+  }
+
+  delete(id: number): Observable<CustomerType> {
+    return this.http.delete<Customer>(`${API_URL}/${id}`);
   }
 }

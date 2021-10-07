@@ -1,0 +1,240 @@
+{
+  "customerType": [
+    {
+      "id": 1,
+      "name": "Diamond"
+    },
+    {
+      "id": 2,
+      "name": "Platinium"
+    },
+    {
+      "id": 3,
+      "name": "Gold"
+    },
+    {
+      "id": 4,
+      "name": "Silver"
+    },
+    {
+      "id": 5,
+      "name": "Member"
+    }
+  ],
+  "customer": [
+    {
+      "id": 1,
+      "code": "KH-0001",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "name": "Hoàng Long",
+      "birthday": "2021-07-06",
+      "idCard": "13456728",
+      "phone": "0912345678",
+      "email": "longhoang@gmail.com",
+      "address": "Hà Nội"
+    },
+    {
+      "id": 2,
+      "code": "KH-0002",
+      "customerType": {
+        "id": 1,
+        "name": "Diamond"
+      },
+      "name": "Hải Yến",
+      "birthday": "2021-07-21",
+      "idCard": "198765728",
+      "phone": "0902123456",
+      "email": "minhquan12@gmail.com",
+      "address": "Quảng Bình"
+    },
+    {
+      "id": 3,
+      "code": "KH-0003",
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
+      "name": "Hữu Tài",
+      "birthday": "2021-07-06",
+      "idCard": "13456728",
+      "phone": "0912345678",
+      "email": "nga1212@gmail.com",
+      "address": "Huế"
+    },
+    {
+      "id": 4,
+      "code": "KH-0004",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "name": "Liên Giang",
+      "birthday": "2021-07-08",
+      "idCard": "123456789",
+      "phone": "0912345678",
+      "email": "linh12@gmail.com",
+      "address": "Huế"
+    },
+    {
+      "code": "KH-0007",
+      "name": "Nguyen Phuc Tai",
+      "birthday": "2021-10-09",
+      "customerType": {
+        "id": 2,
+        "name": "Platinium"
+      },
+      "idCard": "12353466546",
+      "phone": "0903388980",
+      "email": "adsgfd@gmail.com",
+      "address": "Quan Lien Chieu",
+      "id": 5
+    },
+    {
+      "code": "KH-0008",
+      "name": "Nguyen Phuc Tai",
+      "birthday": "2021-10-09",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "idCard": "223647868",
+      "phone": "0913388980",
+      "email": "sdg@gmail.com",
+      "address": "Quan Lien Chieu",
+      "id": 6
+    }
+  ],
+  "position": [
+    {
+      "id": 1,
+      "name": "Lễ tân"
+    },
+    {
+      "id": 2,
+      "name": "Phục vụ"
+    },
+    {
+      "id": 3,
+      "name": "Chuyên viên"
+    },
+    {
+      "id": 4,
+      "name": "Giám sát"
+    },
+    {
+      "id": 5,
+      "name": "Quản lý"
+    },
+    {
+      "id": 6,
+      "name": "Giám đốc"
+    }
+  ],
+  "division": [
+    {
+      "id": 1,
+      "name": "Sale-Marketing"
+    },
+    {
+      "id": 2,
+      "name": "Hành chính"
+    },
+    {
+      "id": 3,
+      "name": "Quản lý"
+    },
+    {
+      "id": 4,
+      "name": "Phục vụ"
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "name": "Trung cấp"
+    },
+    {
+      "id": 2,
+      "name": "Cao đẳng"
+    },
+    {
+      "id": 3,
+      "name": "Đại học"
+    },
+    {
+      "id": 4,
+      "name": "Sau đại học"
+    }
+  ],
+  "employee": [
+    {
+      "id": 1,
+      "name": "Phương Linh",
+      "position": {
+        "id": 1,
+        "name": "Lễ tân"
+      },
+      "education": {
+        "id": 3,
+        "name": "Đại học"
+      },
+      "division": {
+        "id": 1,
+        "name": "Sale-Marketing"
+      },
+      "birthday": "1997-02-24",
+      "idCard": "123456789",
+      "salary": "6000000",
+      "phone": "0987654567",
+      "email": "linhphuong@gmail.com",
+      "address": "Huế"
+    },
+    {
+      "id": 2,
+      "name": "Diệu Chi",
+      "position": {
+        "id": 3,
+        "name": "Chuyên viên"
+      },
+      "education": {
+        "id": 3,
+        "name": "Đại học"
+      },
+      "division": {
+        "id": 2,
+        "name": "Hành chính"
+      },
+      "birthday": "1999-12-12",
+      "idCard": "123456789",
+      "salary": "6000000",
+      "phone": "0987654567",
+      "email": "chidieu@gmail.com",
+      "address": "Hà Nội"
+    },
+    {
+      "id": 3,
+      "name": "Hải Đăng",
+      "position": {
+        "id": 5,
+        "name": "Quản lý"
+      },
+      "education": {
+        "id": 3,
+        "name": "đại học"
+      },
+      "division": {
+        "id": 3,
+        "name": "Quản lý"
+      },
+      "birthday": "1997-02-24",
+      "idCard": "123456789",
+      "salary": "6000000",
+      "phone": "0987654567",
+      "email": "haidang@gmail.com",
+      "address": "Đà Nẵng"
+    }
+  ]
+}

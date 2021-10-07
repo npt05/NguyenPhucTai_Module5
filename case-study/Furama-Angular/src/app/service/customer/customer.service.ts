@@ -1,58 +1,41 @@
 import {Injectable} from '@angular/core';
-import {Customer} from '../../../modules/Customer';
-import {CustomerTypeService} from '../customer-type/customer-type.service';
-import {CustomerType} from '../../../modules/CustomerType';
+import {Customer} from '../../../model/customer/Customer';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CustomerService {
+  private API_URL = 'http://localhost:3000/customer';
 
-  customers: Customer[];
-  customerTypeList: CustomerType[];
-
-  constructor(private customerType: CustomerTypeService) {
-    this.customerTypeList = this.customerType.getAll();
-    this.customers = [
-      {
-        customerId: "1", customerCode: 'KH-0001', customerName: 'Hoàng Long', customerGender: 'Nam',
-        customerPhone: '0902839472', customerEmail: 'longhoang@gmail.com', customerIdCard: '123456789',
-        customerAdress: 'Hà Nội', customerBirthday: '2021-11-09', customerType: this.customerTypeList[0]
-      },
-      {
-        customerId: "2", customerCode: 'KH-0002', customerName: 'Văn Tuấn', customerGender: 'Nam',
-        customerPhone: '0912018445', customerEmail: 'vantuan@gmail.com', customerIdCard: '120846789',
-        customerAdress: 'Bình Dương', customerBirthday: '2021-09-08', customerType: this.customerTypeList[1]
-      },
-      {
-        customerId: "3", customerCode: 'KH-0003', customerName: 'Hải Yến', customerGender: 'Nữ',
-        customerPhone: '0904989488', customerEmail: 'haiyen@gmail.com', customerIdCard: '120284789',
-        customerAdress: 'Huế', customerBirthday: '2021-03-23', customerType: this.customerTypeList[2]
-      },
-      {
-        customerId: "4", customerCode: 'KH-0004', customerName: 'Liên Giang', customerGender: 'Nữ',
-        customerPhone: '0919157444', customerEmail: 'gianglien@gmail.com', customerIdCard: '128173789',
-        customerAdress: 'Huế', customerBirthday: '2021-08-17', customerType: this.customerTypeList[3]
-      }
-    ];
+  constructor(private http: HttpClient) {
   }
 
-  getAll() {
-    return this.customers;
+  getAll(): Observable<Customer[] | any> {
+    return this.http.get(this.API_URL);
   }
 
-  createCustomer(customer: Customer) {
-    this.customers.push(customer);
+  save(customer): Observable<Customer | any> {
+    return this.http.post(this.API_URL, customer);
   }
 
-  findById(id: String): Customer {
-    for (let customer of this.customers) {
-
-      if (customer.customerId == id) {
-        return customer;
-      }
-    }
-    return null;
-  }
+  // findById(id: number) {
+  //   return this.http.get<Customer>(`${this.API_URL}/${id}`);
+  // }
+  //
+  // update(id: number, customer: Customer): Observable<Customer> {
+  //   return this.http.put<Customer>(`${this.API_URL}/${id}`, customer);
+  // }
+  //
+  // delete(id: number): Observable<Customer> {
+  //   return this.http.delete<Customer>(`${this.API_URL}/${id}`);
+  // }
+  //
+  // search(name: string, name2: string, birthday: Date, birthday2: Date): Observable<Customer[]> {
+  //   return this.http.get<Customer[]>(this.API_URL + '?name_like=' + name + '&customerType.name_like=' + name2 + '&birthday_start' + birthday + '&_end' + birthday2);
+  // }
 
 }

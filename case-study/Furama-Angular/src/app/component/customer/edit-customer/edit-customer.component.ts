@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {Customer} from '../../../../modules/Customer';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
 import {CustomerService} from '../../../service/customer/customer.service';
-import {CustomerType} from '../../../../modules/CustomerType';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {CustomerType} from '../../../../model/customer/CustomerType';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {CustomerTypeService} from '../../../service/customer-type/customer-type.service';
 
 @Component({
@@ -14,60 +13,57 @@ import {CustomerTypeService} from '../../../service/customer-type/customer-type.
 export class EditCustomerComponent implements OnInit {
 
   editForm: FormGroup;
-  id: String;
+  id: number;
   customerTypes: CustomerType[];
-  customerUpdate: Customer;
-
-  customerEdit: Customer;
 
   constructor(private formBuilder: FormBuilder,
               private customerService: CustomerService,
               private activatedRoute: ActivatedRoute,
               private customerTypeService: CustomerTypeService,
               private router: Router) {
-    this.id = this.activatedRoute.snapshot.params.id;
-  }
-
-  ngOnInit(): void {
-    this.formInit();
-    this.setCustomer();
-  }
-
-  formInit() {
-    this.editForm = this.formBuilder.group({
-      customerId: [],
-      customerCode: ['', [Validators.required, Validators.pattern('^KH-\\d{4}$')]],
-      customerName: ['', Validators.required],
-      customerBirthday: ['', Validators.required],
-      customerType: ['', Validators.required],
-      customerGender: ['', Validators.required],
-      customerIdCard: ['', [Validators.required, Validators.pattern('^\\d{9}|\\d{12}$')]],
-      customerPhone: ['', [Validators.required, Validators.pattern('^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$')]],
-      customerEmail: ['', [Validators.required, Validators.email]],
-      customerAdress: ['', Validators.required]
+    this.activatedRoute.paramMap.subscribe((paramMap: ParamMap) => {
+      this.id = +paramMap.get('id');
+      this.getCustomer(this.id);
     });
   }
 
-  setCustomer() {
-      this.editForm.patchValue(this.customerService.findById(this.id));
+  ngOnInit(): void {
+    this.getAllCustomerType();
   }
 
-  update(id: String) {
-    if(this.editForm.valid){
-      this.customerUpdate = this.editForm.value;
-      this.customerService.findById(id).customerCode = this.customerUpdate.customerCode;
-      this.customerService.findById(id).customerName = this.customerUpdate.customerName;
-      this.customerService.findById(id).customerBirthday = this.customerUpdate.customerBirthday;
-      this.customerService.findById(id).customerType = this.customerUpdate.customerType;
-      this.customerService.findById(id).customerGender = this.customerUpdate.customerGender;
-      this.customerService.findById(id).customerIdCard = this.customerUpdate.customerIdCard;
-      this.customerService.findById(id).customerPhone = this.customerUpdate.customerPhone;
-      this.customerService.findById(id).customerEmail = this.customerUpdate.customerEmail;
-      this.customerService.findById(id).customerAdress = this.customerUpdate.customerAdress;
-      this.router.navigateByUrl("/customer");
-    }
+  getCustomer(id: number) {
+    return this.customerService.findById(id).subscribe(customer => {
+      this.editForm = this.formBuilder.group({
+        id: [],
+        code: ['', [Validators.required, Validators.pattern('^KH-\\d{4}$')]],
+        name: ['', Validators.required],
+        birthday: ['', Validators.required],
+        customerType: ['', Validators.required],
+        idCard: ['', [Validators.required, Validators.pattern('^\\d{9}|\\d{12}$')]],
+        phone: ['', [Validators.required, Validators.pattern('^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$')]],
+        email: ['', [Validators.required, Validators.email]],
+        address: ['', Validators.required]
+      });
+    });
   }
-  getAllCustomerType(){
-    this.customerTypes = this.customerTypeService.getAll();
+
+  getAllCustomerType() {
+    this.customerTypeService.getAll().subscribe(customerType => {
+      this.customerTypes = customerType;
+    });
+  }
+
+
+  update(id: number) {
+
+    if (this.editForm.valid) {
+      const customer = this.editForm.value;
+      this.customerService.update(id, customer).subscribe(() => {
+        this.router.navigate(['/customer/list']);
+        alert('Cập nhật thành công');
+      }, e => {
+        console.log(e);
+      });
+    }
   }
 }

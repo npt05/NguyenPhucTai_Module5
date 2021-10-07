@@ -1,22 +1,19 @@
 import { Injectable } from '@angular/core';
-import {Education} from '../../../modules/Education';
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Education} from '../../../model/employee/Education';
 
+const API_URL = 'http://localhost:3000/educationDegree';
 @Injectable({
   providedIn: 'root'
 })
 export class EducationService {
 
-  educations: Education[];
-  constructor() {
-    this.educations = [
-      {id:1, name: 'Trung cấp'},
-      {id:2, name: 'Cao đẳng'},
-      {id:3, name: 'Đại học'},
-      {id:4, name: 'Sau đại học'}
-    ];
+
+  constructor(private http: HttpClient) {
   }
 
-  getAll(){
-    return this.educations;
+  getAll(): Observable<Education[]> {
+    return this.http.get<Education[]>(API_URL);
   }
 }

@@ -1,24 +1,17 @@
 import { Injectable } from '@angular/core';
-import {Position} from '../../../modules/Position';
-
+import {HttpClient} from '@angular/common/http';
+import {Observable} from 'rxjs';
+import {Position} from '../../../model/employee/Position';
+const API_URL = 'http://localhost:3000/position';
 @Injectable({
   providedIn: 'root'
 })
 export class PositionService {
 
-  positions: Position[];
-  constructor() {
-    this.positions = [
-      {id:1, name: 'Lễ Tân'},
-      {id:2, name: 'Phục vụ'},
-      {id:3, name: 'Chuyên viên'},
-      {id:4, name: 'Giám sát'},
-      {id:5, name: 'Quản lý'},
-      {id:6, name: 'Giám đốc'}
-    ];
+  constructor(private http: HttpClient) {
   }
 
-  getAll(){
-    return this.positions;
+  getAll(): Observable<Position[]> {
+    return this.http.get<Position[]>(API_URL);
   }
 }

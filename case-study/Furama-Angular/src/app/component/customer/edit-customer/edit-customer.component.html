@@ -15,17 +15,17 @@
     <div class="col-3">
       <div class="form-group">
         <label for="numberId"> Customer ID</label>
-        <input formControlName="customerId" name="customerId" type="text" class="form-control" id="numberId" aria-describedby="numberId" readonly>
+        <input formControlName="id" name="id" type="text" class="form-control" id="numberId" aria-describedby="numberId" readonly>
       </div>
     </div>
     <div class="col-4">
       <div class="form-group">
         <label>Customer Code</label>
-        <input type="text" formControlName="customerCode" name="customerCode" class="form-control"/>
-        <div class="validate" *ngIf="editForm.get('customerCode').invalid && editForm.get('customerCode').touched">
-          <span *ngIf="editForm.get('customerCode').hasError('required')">Vui lòng nhập mã khách hàng!</span>
+        <input type="text" formControlName="code" name="code" class="form-control"/>
+        <div class="validate" *ngIf="editForm.get('code').invalid && editForm.get('code').touched">
+          <span *ngIf="editForm.get('code').hasError('required')">Vui lòng nhập mã khách hàng!</span>
           <span
-            *ngIf="editForm.get('customerCode').hasError('pattern')">Mã khách hàng không đúng định dạng(KH-XXXX)!</span>
+            *ngIf="editForm.get('code').hasError('pattern')">Mã khách hàng không đúng định dạng(KH-XXXX)!</span>
         </div>
       </div>
     </div>
@@ -43,8 +43,8 @@
     <div class="col-3">
       <div class="form-group">
         <label>Customer Name</label>
-        <input formControlName="customerName" name="customerName" type="text" class="form-control"/>
-        <span class="validate" *ngIf="editForm.get('customerName').invalid && editForm.get('customerName').touched">
+        <input formControlName="name" name="name" type="text" class="form-control"/>
+        <span class="validate" *ngIf="editForm.get('name').invalid && editForm.get('name').touched">
             Tên khách hàng không được để trống!
           </span>
       </div>
@@ -55,37 +55,23 @@
     <div class="col-3">
       <div class="form-group ">
         <label>Birthday</label>
-        <input formControlName="customerBirthday" name="customerBirthday" type="date" class="form-control"/>
+        <input formControlName="birthday" name="birthday" type="date" class="form-control"/>
         <span class="validate"
-              *ngIf="editForm.get('customerBirthday').invalid && editForm.get('customerBirthday').touched">
+              *ngIf="editForm.get('birthday').invalid && editForm.get('birthday').touched">
             Vui lòng nhập ngày sinh!
           </span>
       </div>
     </div>
-    <div class="col-4">
-      <div class="form-group">
-        <label>Gender</label>
-        <select formControlName="customerGender" name="customerGender" class="form-control" required>
-          <option selected disabled value="">Choose...</option>
-          <option value="Male">Male</option>
-          <option value="Female">Female</option>
-          <option value="Other">Other</option>
-        </select>
-        <span class="validate"
-              *ngIf="editForm.get('customerGender').invalid && editForm.get('customerGender').touched">
-            Vui lòng chọn giới tính!
-          </span>
-      </div>
-    </div>
+
     <div class="col-3">
       <div class="form-group">
         <label>Id Card</label>
-        <input formControlName="customerIdCard" name="customerIdCard" type="text" class="form-control"/>
+        <input formControlName="idCard" name="idCard" type="text" class="form-control"/>
         <div class="validate"
-             *ngIf="editForm.get('customerIdCard').invalid && editForm.get('customerIdCard').touched">
-          <span *ngIf="editForm.get('customerIdCard').hasError('required')">Vui lòng nhập Id Card</span>
+             *ngIf="editForm.get('idCard').invalid && editForm.get('idCard').touched">
+          <span *ngIf="editForm.get('idCard').hasError('required')">Vui lòng nhập Id Card</span>
           <span
-            *ngIf="editForm.get('customerIdCard').hasError('pattern')">Id Card không đúng định dạng!</span>
+            *ngIf="editForm.get('idCard').hasError('pattern')">Id Card không đúng định dạng!</span>
         </div>
       </div>
     </div>
@@ -96,13 +82,13 @@
     <div class="col-3">
       <div class="form-group">
         <label>Phone Number</label>
-        <input formControlName="customerPhone" name="customerPhone" type="text" class="form-control"/>
+        <input formControlName="phone" name="phone" type="text" class="form-control"/>
         <div class="validate"
-             *ngIf="editForm.get('customerPhone').invalid && editForm.get('customerPhone').touched">
-            <span *ngIf="editForm.get('customerPhone').hasError('required')">
+             *ngIf="editForm.get('phone').invalid && editForm.get('phone').touched">
+            <span *ngIf="editForm.get('phone').hasError('required')">
               Vui lòng nhập số điện thoại
             </span>
-          <span *ngIf="editForm.get('customerPhone').hasError('pattern')">
+          <span *ngIf="editForm.get('phone').hasError('pattern')">
               Số điện thoại không đúng định dạng!
             </span>
         </div>
@@ -111,9 +97,9 @@
     <div class="col-4">
       <div class="form-group ">
         <label>Email</label>
-        <input formControlName="customerEmail" name="customerEmail" type="text" class="form-control"/>
+        <input formControlName="email" name="email" type="text" class="form-control"/>
         <span class="validate"
-              *ngIf="editForm.get('customerEmail').invalid && editForm.get('customerEmail').touched">
+              *ngIf="editForm.get('email').invalid && editForm.get('email').touched">
             Email không đúng định dạng!
           </span>
       </div>
@@ -121,9 +107,9 @@
     <div class="col-3">
       <div class="form-group">
         <label>Address</label>
-        <input formControlName="customerAdress" name="customerAdress" type="text" class="form-control"/>
+        <input formControlName="address" name="address" type="text" class="form-control"/>
         <span class="validate"
-              *ngIf="editForm.get('customerAdress').invalid && editForm.get('customerAdress').touched">
+              *ngIf="editForm.get('address').invalid && editForm.get('address').touched">
             Vui lòng nhập địa chỉ!
           </span>
       </div>

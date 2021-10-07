@@ -17,8 +17,8 @@
     <div class="col-3">
       <div class="form-group">
         <label>Name:</label>
-        <input formControlName="employeeName" type="text" class="form-control">
-        <span class="validate" *ngIf="employeeFormGroup.get('employeeName').invalid && employeeFormGroup.get('employeeName').touched">
+        <input formControlName="name" type="text" class="form-control">
+        <span class="validate" *ngIf="employeeFormGroup.get('name').invalid && employeeFormGroup.get('name').touched">
             Tên nhân viên không được để trống!
           </span>
       </div>
@@ -26,9 +26,9 @@
     <div class="col-4">
       <div class="form-group">
         <label>Email: </label>
-        <input formControlName="employeeEmail" type="text" class="form-control"/>
+        <input formControlName="email" type="text" class="form-control"/>
         <span class="validate"
-              *ngIf="employeeFormGroup.get('employeeEmail').invalid && employeeFormGroup.get('employeeEmail').touched">
+              *ngIf="employeeFormGroup.get('email').invalid && employeeFormGroup.get('email').touched">
             Email không đúng định dạng!
           </span>
       </div>
@@ -36,12 +36,12 @@
     <div class="col-3">
       <div class="form-group">
         <label>ID Card: </label>
-        <input formControlName="employeeIdCard" type="text" class="form-control"/>
+        <input formControlName="idCard" type="text" class="form-control"/>
         <div class="validate"
-             *ngIf="employeeFormGroup.get('employeeIdCard').invalid && employeeFormGroup.get('employeeIdCard').touched">
-          <span *ngIf="employeeFormGroup.get('employeeIdCard').hasError('required')">Vui lòng nhập Id Card</span>
+             *ngIf="employeeFormGroup.get('idCard').invalid && employeeFormGroup.get('idCard').touched">
+          <span *ngIf="employeeFormGroup.get('idCard').hasError('required')">Vui lòng nhập Id Card</span>
           <span
-            *ngIf="employeeFormGroup.get('employeeIdCard').hasError('pattern')">Id Card không đúng định dạng!</span>
+            *ngIf="employeeFormGroup.get('idCard').hasError('pattern')">Id Card không đúng định dạng!</span>
         </div>
       </div>
     </div>
@@ -52,22 +52,22 @@
     <div class="col-3">
       <div class="form-group">
         <label>Salary: </label>
-        <input formControlName="employeeSalary" type="number" class="form-control">
+        <input formControlName="salary" type="number" class="form-control">
         <div class="validate"
-             *ngIf="employeeFormGroup.get('employeeSalary').invalid && employeeFormGroup.get('employeeSalary').touched">
-          <span *ngIf="employeeFormGroup.get('employeeSalary').hasError('required')">Vui lòng nhập lương</span>
+             *ngIf="employeeFormGroup.get('salary').invalid && employeeFormGroup.get('salary').touched">
+          <span *ngIf="employeeFormGroup.get('salary').hasError('required')">Vui lòng nhập lương</span>
           <span
-            *ngIf="employeeFormGroup.get('employeeIdCard').hasError('min')">Lương phải là số dương</span>
+            *ngIf="employeeFormGroup.get('salary').hasError('min')">Lương phải là số dương</span>
         </div>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Phone: </label>
-        <input formControlName="employeePhone" type="text" class="form-control"/>
+        <input formControlName="phone" type="text" class="form-control"/>
         <div class="validate"
-             *ngIf="employeeFormGroup.get('employeePhone').invalid && employeeFormGroup.get('employeePhone').touched">
-            <span *ngIf="employeeFormGroup.get('employeePhone').hasError('required')">
+             *ngIf="employeeFormGroup.get('phone').invalid && employeeFormGroup.get('phone').touched">
+            <span *ngIf="employeeFormGroup.get('phone').hasError('required')">
               Vui lòng nhập số điện thoại
             </span>
           <span *ngIf="employeeFormGroup.get('employeePhone').hasError('pattern')">
@@ -79,9 +79,9 @@
     <div class="col-2">
       <div class="form-group">
         <label>Birthday:</label>
-        <input formControlName="employeeBirthday" type="date" class="form-control"/>
+        <input formControlName="birthday" type="date" class="form-control"/>
         <span class="validate"
-              *ngIf="employeeFormGroup.get('employeeBirthday').invalid && employeeFormGroup.get('employeeBirthday').touched">
+              *ngIf="employeeFormGroup.get('birthday').invalid && employeeFormGroup.get('birthday').touched">
             Vui lòng nhập ngày sinh!
           </span>
       </div>
@@ -89,9 +89,9 @@
     <div class="col-3">
       <div class="form-group">
         <label>Address: </label>
-        <input formControlName="employeeAddress" type="text" class="form-control"/>
+        <input formControlName="address" type="text" class="form-control"/>
         <span class="validate"
-              *ngIf="employeeFormGroup.get('employeeAddress').invalid && employeeFormGroup.get('employeeAddress').touched">
+              *ngIf="employeeFormGroup.get('address').invalid && employeeFormGroup.get('address').touched">
             Vui lòng nhập địa chỉ!
           </span>
       </div>
@@ -102,10 +102,10 @@
     <div class="col-3">
       <div class="form-group">
         <label>Position: </label>
-        <select formControlName="employeePosition" class="form-control">
+        <select formControlName="position" class="form-control">
           <option *ngFor="let position of positions" [ngValue]="position">{{position.name}}</option>
         </select>
-        <span class="validate" *ngIf="employeeFormGroup.get('employeePosition').invalid && employeeFormGroup.get('employeePosition').touched">
+        <span class="validate" *ngIf="employeeFormGroup.get('position').invalid && employeeFormGroup.get('position').touched">
             Vui lòng chọn vị trí!
           </span>
       </div>
@@ -113,10 +113,10 @@
     <div class="col-4">
       <div class="form-group">
         <label>Education Degree: </label>
-        <select formControlName="employeeEducation" class="form-control">
+        <select formControlName="education" class="form-control">
           <option *ngFor="let education of educations" [ngValue]="education">{{education.name}}</option>
         </select>
-        <span class="validate" *ngIf="employeeFormGroup.get('employeeEducation').invalid && employeeFormGroup.get('employeeEducation').touched">
+        <span class="validate" *ngIf="employeeFormGroup.get('education').invalid && employeeFormGroup.get('education').touched">
             Vui lòng chọn bằng cấp!
           </span>
       </div>
@@ -124,10 +124,10 @@
     <div class="col-3">
       <div class="form-group">
         <label>Division: </label>
-        <select formControlName="employeeDivition" class="form-control">
-          <option *ngFor="let divition of divitions" [ngValue]="divition">{{divition.name}}</option>
+        <select formControlName="division" class="form-control">
+          <option *ngFor="let division of divisions" [ngValue]="division">{{division.name}}</option>
         </select>
-        <span class="validate" *ngIf="employeeFormGroup.get('employeeDivition').invalid && employeeFormGroup.get('employeeDivition').touched">
+        <span class="validate" *ngIf="employeeFormGroup.get('division').invalid && employeeFormGroup.get('division').touched">
             Vui lòng chọn bộ phận làm việc!
           </span>
       </div>
