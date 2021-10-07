@@ -1,0 +1,62 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "IPhone"
+    },
+    {
+      "id": 2,
+      "name": "samsung"
+    },
+    {
+      "id": 1,
+      "name": "lg"
+    },
+    {
+      "id": 4,
+      "name": "as"
+    }
+  ],
+  "product": [
+    {
+      "id": 1,
+      "name": "IPhone 11",
+      "price": 1560000,
+      "description": "Like new",
+      "category": {
+        "id": 1,
+        "name": "IPhone"
+      }
+    },
+    {
+      "id": 2,
+      "name": "IPhone 12",
+      "price": 2400000,
+      "description": "New",
+      "category": {
+        "id": 1,
+        "name": "IPhone"
+      }
+    },
+    {
+      "id": 3,
+      "name": "IPhone X",
+      "price": 968000,
+      "description": "97%",
+      "category": {
+        "id": 1,
+        "name": "IPhone"
+      }
+    },
+    {
+      "id": 4,
+      "name": "IPhone 8",
+      "price": 754000,
+      "description": "98",
+      "category": {
+        "id": 1,
+        "name": "IPhone"
+      }
+    }
+  ]
+}

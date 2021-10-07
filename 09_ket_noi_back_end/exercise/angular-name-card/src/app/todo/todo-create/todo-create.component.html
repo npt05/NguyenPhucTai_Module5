@@ -1,0 +1,13 @@
+<h1>Tạo todo</h1>
+<form [formGroup]="createForm" (ngSubmit)="submit()">
+  <table>
+    <tr>
+      <td>name:</td>
+      <td><input type="text" formControlName="name"></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td><button>Tạo mới</button></td>
+    </tr>
+  </table>
+</form>

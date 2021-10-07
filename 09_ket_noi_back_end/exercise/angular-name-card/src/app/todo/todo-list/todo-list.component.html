@@ -1,0 +1,40 @@
+<h2 class="text-center">
+  Todo App
+  <button><a routerLink='/create'>create</a></button>
+</h2>
+<div class="col-md-8 offset-md-2">
+  <ul *ngFor="let t of todos">
+    <li>
+      id: {{t.id}}
+    </li>
+    <li>
+      {{t.name}}
+    </li>
+    <li>
+      <button><a [routerLink]="['/edit',t.id]">Edit</a></button>
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal"
+              (click)="changeId(t.id)">Delete
+      </button>
+    </li>
+  </ul>
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Do you want to delete???
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteModal()">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
