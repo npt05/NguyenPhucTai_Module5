@@ -3,36 +3,36 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Employee} from '../../../model/employee/Employee';
 
-const API_URL = 'http://localhost:3000/employee';
+
 @Injectable({
   providedIn: 'root'
 })
 export class EmployeeService {
-
+  private API_URL = 'http://localhost:3000/employee';
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Employee[]> {
-    return this.http.get<Employee[]>(API_URL);
+  getAll(): Observable<Employee[] | any> {
+    return this.http.get(this.API_URL);
   }
 
-  save(employee): Observable<Employee> {
-    return this.http.post<Employee>(API_URL, employee);
+  save(employee): Observable<Employee | any> {
+    return this.http.post(this.API_URL, employee);
   }
 
-  findById(id: number) {
-    return this.http.get<Employee>(`${API_URL}/${id}`);
+  findById(id: number):Observable<Employee | any> {
+    return this.http.get(`${this.API_URL}/${id}`);
   }
 
-  update(id: number, employee: Employee): Observable<Employee> {
-    return this.http.put<Employee>(`${API_URL}/${id}`, employee);
+  update(id: number, employee: Employee): Observable<Employee | any> {
+    return this.http.put(`${this.API_URL}/${id}`, employee);
   }
 
-  delete(id: number): Observable<Employee> {
-    return this.http.delete<Employee>(`${API_URL}/${id}`);
+  delete(id: number): Observable<Employee | any> {
+    return this.http.delete(`${this.API_URL}/${id}`);
   }
 
-  search(name: string): Observable<Employee[]> {
-    return this.http.get<Employee[]>(API_URL + '?name_like=' + name);
+  search(name: string): Observable<Employee[] | any> {
+    return this.http.get(this.API_URL + '?name_like=' + name);
   }
 }

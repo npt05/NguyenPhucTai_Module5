@@ -14,17 +14,12 @@ export class ListEmployeeComponent implements OnInit {
   employees: Employee[];
   constructor(private employeeService: EmployeeService) {
   }
-
-  ngOnInit(): void {
+  ngOnInit(){
     this.getAll();
-
   }
-
   getAll() {
     this.employeeService.getAll().subscribe(employees => {
       this.employees = employees;
     });
   }
-
-
 }

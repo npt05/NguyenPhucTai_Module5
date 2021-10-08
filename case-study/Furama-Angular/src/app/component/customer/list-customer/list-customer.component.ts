@@ -11,17 +11,31 @@ import {CustomerType} from '../../../../model/customer/CustomerType';
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
-
+  customerName = '';
+  customerTypeName = '';
   customers: Customer[] | any;
   customerTypes: CustomerType[];
   constructor(private customerService: CustomerService,
               private customerTypeService: CustomerTypeService) {
-    this.customerService.getAll().subscribe(next =>{
-      this.customers = next;
-      console.log(next);
-    });
   }
   ngOnInit(): void {
+    this.getAll();
+
   }
+  getAll() {
+    this.customerService.getAll().subscribe(customers => {
+      this.customers = customers;
+      this.customerTypeService.getAll().subscribe(customerType => {
+        this.customerTypes = customerType;
+      });
+    });
+  }
+
+  search() {
+    this.customerService.findByName(this.customerName).subscribe(customer => {
+      this.customers = customer;
+    });
+  }
+
 
 }

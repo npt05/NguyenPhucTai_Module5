@@ -1,0 +1,23 @@
+<h1 class="text-center">Danh sách sản phẩm</h1>
+<div class="form-group col-md-4">
+  <input type="text"  placeholder="input search" [(ngModel)]="keyWord">
+</div>
+<br>
+<table class="container table table-bordered table-striped">
+  <tr>
+    <td>STT</td>
+    <td>Tên</td>
+    <td>Giá</td>
+    <td>Mô tả</td>
+    <td>Edit</td>
+    <td>Delete</td>
+  </tr>
+  <tr *ngFor="let product of products | filter:keyWord | paginate: {itemsPerPage: 2, currentPage: p} ; index as i">
+    <td>{{p*2+i-1}}</td>
+    <td>{{product.name}}</td>
+    <td>{{product.price}}</td>
+    <td>{{product.description}}</td>
+    <td></td>
+  </tr>
+</table>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

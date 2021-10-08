@@ -1,5 +1,3 @@
-
-
 <form [formGroup]="editForm" (ngSubmit)="update(id)">
   <div class="row">
     <div class="col-3"></div>
@@ -15,7 +13,8 @@
     <div class="col-3">
       <div class="form-group">
         <label for="numberId"> Customer ID</label>
-        <input formControlName="id" name="id" type="text" class="form-control" id="numberId" aria-describedby="numberId" readonly>
+        <input formControlName="id" name="id" type="text" class="form-control" id="numberId" aria-describedby="numberId"
+               readonly>
       </div>
     </div>
     <div class="col-4">
@@ -29,17 +28,21 @@
         </div>
       </div>
     </div>
-    <div class="col-4">
+    <div class="col-3">
       <div class="form-group">
         <label>Customer Type</label>
-        <select class="form-control" formControlName="customerType" name="customerType">
-          <option  *ngFor="let customerType of customerTypes" [ngValue]="customerType">{{customerType.name}}</option>
+        <select class="form-control" formControlName="customerType" name="customerType" [compareWith]="compareFn">
+          <option *ngFor="let customerType of customerTypes" [ngValue]="customerType"
+                  selected>{{customerType.name}}</option>
         </select>
         <span class="validate" *ngIf="editForm.get('customerType').invalid && editForm.get('customerType').touched">
             Vui lòng chọn loại khách hàng!
           </span>
       </div>
     </div>
+  </div>
+  <div class="row">
+    <div class="col-1"></div>
     <div class="col-3">
       <div class="form-group">
         <label>Customer Name</label>
@@ -49,11 +52,8 @@
           </span>
       </div>
     </div>
-    <div class="col-1"></div>
-
-    <div class="col-1"></div>
-    <div class="col-3">
-      <div class="form-group ">
+    <div class="col-4">
+      <div class="form-group">
         <label>Birthday</label>
         <input formControlName="birthday" name="birthday" type="date" class="form-control"/>
         <span class="validate"
@@ -62,7 +62,6 @@
           </span>
       </div>
     </div>
-
     <div class="col-3">
       <div class="form-group">
         <label>Id Card</label>
@@ -75,7 +74,6 @@
         </div>
       </div>
     </div>
-    <div class="col-1"></div>
   </div>
   <div class="row">
     <div class="col-1"></div>
@@ -123,31 +121,16 @@
         <button type="submit" class="btn btn-success my-1">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                class="bi bi-calendar-check" viewBox="0 0 16 16">
-            <path d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
-            <path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
+            <path
+              d="M10.854 7.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7.5 9.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
+            <path
+              d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5zM1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1z"/>
           </svg>
           Save
         </button>
       </div>
-
-      <div style="display: inline-block; margin-left: 490px">
-        <a>
-          <button type="button" class="btn btn-secondary my-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
-                 class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
-              <path fill-rule="evenodd"
-                    d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
-            </svg>
-            Reset
-          </button>
-        </a>
-
-      </div>
-
       <div style="display: inline-block; margin-left: 505px">
-        <a >
-
+        <a routerLink="/customer">
           <button type="button" class="btn btn-warning my-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                  class="bi bi-arrow-return-left" viewBox="0 0 16 16">

@@ -22,20 +22,24 @@ export class CustomerService {
     return this.http.post(this.API_URL, customer);
   }
 
-  // findById(id: number) {
-  //   return this.http.get<Customer>(`${this.API_URL}/${id}`);
-  // }
-  //
-  // update(id: number, customer: Customer): Observable<Customer> {
-  //   return this.http.put<Customer>(`${this.API_URL}/${id}`, customer);
-  // }
-  //
-  // delete(id: number): Observable<Customer> {
-  //   return this.http.delete<Customer>(`${this.API_URL}/${id}`);
-  // }
-  //
-  // search(name: string, name2: string, birthday: Date, birthday2: Date): Observable<Customer[]> {
-  //   return this.http.get<Customer[]>(this.API_URL + '?name_like=' + name + '&customerType.name_like=' + name2 + '&birthday_start' + birthday + '&_end' + birthday2);
-  // }
+  findById(id: number): Observable<Customer | any> {
+    return this.http.get(`${this.API_URL}/${id}`);
+  }
+
+  update(id: number, customer: Customer): Observable<Customer | any> {
+    return this.http.put(`${this.API_URL}/${id}`, customer);
+  }
+
+  delete(id: number): Observable<Customer | any> {
+    return this.http.delete(`${this.API_URL}/${id}`);
+  }
+
+  findByName(name: string): Observable<any> {
+    return this.http.get(`${this.API_URL}?name_like=${name}`);
+  }
+
+  public search(name: string, customerTypeName: string): Observable<Customer[]> {
+    return this.http.get<Customer[]>(this.API_URL + "?name_like=" + name + "&customerType.name=" + customerTypeName);
+  }
 
 }

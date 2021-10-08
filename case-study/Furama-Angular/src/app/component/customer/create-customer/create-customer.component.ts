@@ -25,7 +25,7 @@ export class CreateCustomerComponent implements OnInit {
       birthday: ['',Validators.required],
       customerType: ['',Validators.required],
       idCard:  ['', [Validators.required, Validators.pattern('^\\d{9}|\\d{12}$')]],
-      phone: ['', [Validators.required, Validators.pattern('^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$')]],
+      phone: ['', [Validators.required, Validators.pattern('^(84|0[3|5|7|8|9])+([0-9]{8})\\b')]],
       email:  ['', [Validators.required, Validators.email]],
       address: ['',Validators.required]
     });
@@ -43,7 +43,7 @@ export class CreateCustomerComponent implements OnInit {
       const customer = this.customerFormGroup.value;
       this.customerService.save(customer).subscribe(() => {
         this.customerFormGroup.reset();
-        this.router.navigate(['/customer']);
+        this.router.navigateByUrl("/customer");
         alert('Tạo thành công');
       }, e => {
         console.log(e);

@@ -105,6 +105,20 @@
       "email": "sdg@gmail.com",
       "address": "Quan Lien Chieu",
       "id": 6
+    },
+    {
+      "code": "KH-0009",
+      "name": "Nguyen Phuc Tai",
+      "birthday": "2021-10-16",
+      "customerType": {
+        "id": 3,
+        "name": "Gold"
+      },
+      "idCard": "123456789",
+      "phone": "0773388980",
+      "email": "sags@gmail.com",
+      "address": "Quan Lien Chieu",
+      "id": 7
     }
   ],
   "position": [

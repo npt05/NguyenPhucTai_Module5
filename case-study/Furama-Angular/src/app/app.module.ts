@@ -20,7 +20,7 @@ import {ListServiceComponent} from './component/service/list-service/list-servic
 import {NavbarComponent} from './component/home/navbar/navbar.component';
 import {FooterComponent} from './component/home/footer/footer.component';
 import {BodyComponent} from './component/home/body/body.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 
 
@@ -46,12 +46,13 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     BodyComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

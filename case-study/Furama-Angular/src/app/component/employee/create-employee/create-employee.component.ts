@@ -17,16 +17,16 @@ import {DivisionService} from '../../../service/employee/divition.service';
 export class CreateEmployeeComponent implements OnInit {
 
   employeeFormGroup: FormGroup;
-
+  positions: Position[];
+  educations: Education[];
+  divisions: Division[];
   constructor(private formBuilder: FormBuilder,
               private positionService: PositionService,
               private divisionService: DivisionService,
               private educationService: EducationService,
               private employeeService: EmployeeService,
               private router: Router) {}
-  positions: Position[];
-  educations: Education[];
-  divisions: Division[];
+
   ngOnInit(): void {
     this.employeeFormGroup = this.formBuilder.group({
       name: ['',Validators.required],
@@ -36,7 +36,7 @@ export class CreateEmployeeComponent implements OnInit {
       birthday: ['',Validators.required],
       salary: ['',[Validators.required], Validators.min(0)],
       idCard:  ['', [Validators.required, Validators.pattern('^\\d{9}|\\d{12}$')]],
-      phone: ['', [Validators.required, Validators.pattern('^090\\d{7}|\\(84\\)\\+90\\d{7}|091\\d{7}|\\(84\\)\\+91\\d{7}$')]],
+      phone: ['', [Validators.required, Validators.pattern('^(84|0[3|5|7|8|9])+([0-9]{8})\\b')]],
       email:  ['', [Validators.required, Validators.email]],
       address: ['',Validators.required]
     });
@@ -60,7 +60,7 @@ export class CreateEmployeeComponent implements OnInit {
       const employee = this.employeeFormGroup.value;
       this.employeeService.save(employee).subscribe(() => {
         this.employeeFormGroup.reset();
-        this.router.navigate(['/employee/list']);
+        this.router.navigateByUrl("/employee");
         alert('Tạo thành công');
       }, e => {
         console.log(e);
