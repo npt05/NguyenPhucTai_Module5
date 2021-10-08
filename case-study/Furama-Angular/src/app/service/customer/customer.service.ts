@@ -22,7 +22,7 @@ export class CustomerService {
     return this.http.post(this.API_URL, customer);
   }
 
-  findById(id: number): Observable<Customer | any> {
+  findById(id: number): Observable<Customer> {
     return this.http.get(`${this.API_URL}/${id}`);
   }
 
@@ -30,9 +30,10 @@ export class CustomerService {
     return this.http.put(`${this.API_URL}/${id}`, customer);
   }
 
-  delete(id: number): Observable<Customer | any> {
-    return this.http.delete(`${this.API_URL}/${id}`);
+  delete(id: number): Observable<any> {
+    return this.http.delete(this.API_URL + '/' + id);
   }
+
 
   findByName(name: string): Observable<any> {
     return this.http.get(`${this.API_URL}?name_like=${name}`);

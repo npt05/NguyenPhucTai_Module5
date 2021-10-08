@@ -23,34 +23,6 @@
   ],
   "customer": [
     {
-      "id": 1,
-      "code": "KH-0001",
-      "customerType": {
-        "id": 1,
-        "name": "Diamond"
-      },
-      "name": "Hoàng Long",
-      "birthday": "2021-07-06",
-      "idCard": "13456728",
-      "phone": "0912345678",
-      "email": "longhoang@gmail.com",
-      "address": "Hà Nội"
-    },
-    {
-      "id": 2,
-      "code": "KH-0002",
-      "customerType": {
-        "id": 1,
-        "name": "Diamond"
-      },
-      "name": "Hải Yến",
-      "birthday": "2021-07-21",
-      "idCard": "198765728",
-      "phone": "0902123456",
-      "email": "minhquan12@gmail.com",
-      "address": "Quảng Bình"
-    },
-    {
       "id": 3,
       "code": "KH-0003",
       "customerType": {

@@ -22,6 +22,11 @@ import {FooterComponent} from './component/home/footer/footer.component';
 import {BodyComponent} from './component/home/body/body.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import {NgxPaginationModule} from 'ngx-pagination';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DeleteCustomerComponent } from './component/customer/delete-customer/delete-customer.component';
+import {ToastrModule} from 'ngx-toastr';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -44,15 +49,20 @@ import {HttpClientModule} from '@angular/common/http';
     ListServiceComponent,
     NavbarComponent,
     FooterComponent,
-    BodyComponent
+    BodyComponent,
+    DeleteCustomerComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        FormsModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
+    NgxPaginationModule,
+    ToastrModule.forRoot(),
+    MatDialogModule,
+    BrowserAnimationsModule,
+    FormsModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })
