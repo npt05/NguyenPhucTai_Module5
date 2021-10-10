@@ -163,18 +163,18 @@
         "id": 1,
         "name": "Lễ tân"
       },
-      "education": {
-        "id": 3,
-        "name": "Đại học"
-      },
       "division": {
         "id": 1,
         "name": "Sale-Marketing"
       },
+      "education": {
+        "id": 3,
+        "name": "Đại học"
+      },
       "birthday": "1997-02-24",
+      "salary": 6600000,
       "idCard": "123456789",
-      "salary": "6000000",
-      "phone": "0987654567",
+      "phone": "0987654566",
       "email": "linhphuong@gmail.com",
       "address": "Huế"
     },

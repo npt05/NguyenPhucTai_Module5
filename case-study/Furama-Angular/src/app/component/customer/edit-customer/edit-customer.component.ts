@@ -27,9 +27,10 @@ export class EditCustomerComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getAllCustomerType();
   }
+
 
   getCustomer(id: number) {
     return this.customerService.findById(id).subscribe(customer => {

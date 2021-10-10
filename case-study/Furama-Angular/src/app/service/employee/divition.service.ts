@@ -13,7 +13,7 @@ export class DivisionService {
   constructor(private http: HttpClient) {
   }
 
-  getAll(): Observable<Division[]> {
-    return this.http.get<Division[]>(API_URL);
+  getAll(): Observable<Division[] | any> {
+    return this.http.get(API_URL);
   }
 }

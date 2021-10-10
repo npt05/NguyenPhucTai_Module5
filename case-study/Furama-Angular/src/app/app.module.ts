@@ -27,6 +27,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteCustomerComponent } from './component/customer/delete-customer/delete-customer.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { DeleteEmployeeComponent } from './component/employee/delete-employee/delete-employee.component';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     NavbarComponent,
     FooterComponent,
     BodyComponent,
-    DeleteCustomerComponent
+    DeleteCustomerComponent,
+    DeleteEmployeeComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,16 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Confirmation Dialog</h5>
+    </div>
+    <div class="modal-body">
+      <input hidden type="text" name="id" id="customerId">
+      <p>Are you sure you want to delete <span style="color:red;">{{employeeName}}</span>?</p>
+      <p class="text-warning"><small>This action cannot be undone.</small></p>
+    </div>
+    <div class="modal-footer">
+      <input mat-dialog-close type="button" class="btn btn-default" value="Cancel">
+      <input type="submit" class="btn btn-danger" (click)="delete()" value="Delete">
+    </div>
+  </div>
+</div>

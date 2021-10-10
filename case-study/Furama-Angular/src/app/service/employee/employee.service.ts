@@ -12,6 +12,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {
   }
 
+
   getAll(): Observable<Employee[] | any> {
     return this.http.get(this.API_URL);
   }

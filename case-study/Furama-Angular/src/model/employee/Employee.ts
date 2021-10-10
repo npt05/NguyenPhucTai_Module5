@@ -5,7 +5,6 @@ import {Position} from './Position';
 
 export interface Employee {
   id?: number;
-  code?: string;
   name?: string;
   position?: Position;
   education?: Education;

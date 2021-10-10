@@ -44,10 +44,12 @@ export class ListCustomerComponent implements OnInit {
 
 
   deleteDialog(id: any): void {
-    this.customerService.findById(id).subscribe(dataCustomer => {
+    this.customerService.findById(id).subscribe(data => {
+
       const dialogRef = this.dialog.open(DeleteCustomerComponent, {
         width: '500px',
-        data: {data1: dataCustomer}
+        data: {customer: data},
+        disableClose: true
       });
 
       dialogRef.afterClosed().subscribe(result => {

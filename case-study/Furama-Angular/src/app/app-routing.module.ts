@@ -6,6 +6,7 @@ import {CreateCustomerComponent} from './component/customer/create-customer/crea
 import {EditCustomerComponent} from './component/customer/edit-customer/edit-customer.component';
 import {CreateEmployeeComponent} from './component/employee/create-employee/create-employee.component';
 import {BodyComponent} from './component/home/body/body.component';
+import {EditEmployeeComponent} from './component/employee/edit-employee/edit-employee.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: "customer/create", component: CreateCustomerComponent},
   {path: "customer/edit/:id", component: EditCustomerComponent},
   {path: "employee", component: ListEmployeeComponent},
+  {path: "employee/edit/:id", component: EditEmployeeComponent},
   {path: "employee/create", component: CreateEmployeeComponent},
 ];
 

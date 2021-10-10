@@ -34,7 +34,7 @@ export class CreateEmployeeComponent implements OnInit {
       division: ['',Validators.required],
       education: ['',Validators.required],
       birthday: ['',Validators.required],
-      salary: ['',[Validators.required], Validators.min(0)],
+      salary: ['',[Validators.required, Validators.min(0)]],
       idCard:  ['', [Validators.required, Validators.pattern('^\\d{9}|\\d{12}$')]],
       phone: ['', [Validators.required, Validators.pattern('^(84|0[3|5|7|8|9])+([0-9]{8})\\b')]],
       email:  ['', [Validators.required, Validators.email]],
@@ -44,14 +44,14 @@ export class CreateEmployeeComponent implements OnInit {
   }
 
   getAll() {
-    this.divisionService.getAll().subscribe(divisions => {
-      this.divisions = divisions;
+    this.divisionService.getAll().subscribe(division => {
+      this.divisions = division;
     });
-    this.positionService.getAll().subscribe(positions => {
-      this.positions = positions;
+    this.positionService.getAll().subscribe(position => {
+      this.positions = position;
     });
-    this.educationService.getAll().subscribe(educations => {
-      this.educations = educations;
+    this.educationService.getAll().subscribe(education => {
+      this.educations = education;
     });
   }
 
