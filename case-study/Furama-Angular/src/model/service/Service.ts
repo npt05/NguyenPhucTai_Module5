@@ -3,18 +3,17 @@ import {ServiceType} from './ServiceType';
 
 
 export interface Service{
-  serviceId?: number;
-  serviceName?: String;
-  serviceCode?: String;
-  serviceMaxPeople?: Number;
-  serviceArea?: Number;
+  id?: number;
+  name?: string;
+  code?: string;
+  maxPeople?: Number;
+  area?: Number;
   numberOfFloors?: Number;
-  standardRoom?: String;
+  standardRoom?: string;
   rentType?: RenType;
   serviceType?: ServiceType;
-  descriptionOtherConvenience?: String;
-  poolArea?: String;
-  serviceCost?: String;
-
+  description?: string;
+  poolArea?: string;
+  cost?: string;
 
 }

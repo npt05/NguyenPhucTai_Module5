@@ -1,4 +1,5 @@
-<form method="post">
+<app-navbar></app-navbar>
+<form [formGroup]="editForm" (ngSubmit)="(update(id))">
   <div class="row">
     <div class="col-3"></div>
     <div class=" col-6">
@@ -14,28 +15,40 @@
     <div class="col-3">
       <div class="form-group">
         <label>Service Name</label>
-        <input type="text" class="form-control" readonly/>
+        <input formControlName="name" name="name" type="text" class="form-control"/>
+        <span class="validate" *ngIf="editForm.get('name').invalid && editForm.get('name').touched">
+            Tên dịch vụ không được để trống!
+          </span>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service ID</label>
-        <input type="text" class="form-control" readonly/>
+        <input formControlName="id" name="id" type="text" class="form-control" readonly/>
       </div>
-
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Type </label>
-        <select class="form-control" id="serviceType">
+        <select class="form-control" formControlName="serviceType" name="serviceType"  [compareWith]="compareFn">
+          <option *ngFor="let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>
         </select>
+        <span class="validate"
+              *ngIf="editForm.get('serviceType').invalid && editForm.get('serviceType').touched">
+            Vui lòng chọn loại dịch vụ!
+          </span>
       </div>
 
     </div>
     <div class="col-3">
       <div class="form-group">
         <label>Service Code</label>
-        <input type="text" class="form-control" readonly/>
+        <input type="text" formControlName="code" name="code" class="form-control"/>
+        <div class="validate" *ngIf="editForm.get('code').invalid && editForm.get('code').touched">
+          <span *ngIf="editForm.get('code').hasError('required')">Vui lòng nhập mã dịch vụ!</span>
+          <span
+            *ngIf="editForm.get('code').hasError('pattern')">Mã dịch vụ không đúng định dạng(DV-XXXX)!</span>
+        </div>
       </div>
 
     </div>
@@ -45,29 +58,48 @@
     <div class="col-3">
       <div class="form-group" id="poolArea">
         <label>Pool Area: </label>
-        <input type="number" class="form-control" placeholder="Enter pool area... ">
+        <input formControlName="poolArea" name="poolArea" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="editForm.get('poolArea').invalid && editForm.get('poolArea').touched">
+          <span *ngIf="editForm.get('poolArea').hasError('required')">Vui lòng nhập diện tích hồ bơi</span>
+          <span
+            *ngIf="editForm.get('poolArea').hasError('min')">Diện tích phải là số dương</span>
+        </div>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Area </label>
-        <input type="number" class="form-control"/>
+        <input formControlName="area" name="area" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="editForm.get('area').invalid && editForm.get('area').touched">
+          <span *ngIf="editForm.get('area').hasError('required')">Vui lòng nhập diện tích sử dụng</span>
+          <span
+            *ngIf="editForm.get('area').hasError('min')">Diện tích phải là số dương</span>
+        </div>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Rent Type </label>
-        <select class="form-control">
-
+        <select class="form-control" formControlName="rentType" name="renType"  [compareWith]="compareFn">
+          <option *ngFor="let renType of renTypes" [ngValue]="renType">{{renType.name}}</option>
         </select>
+        <span class="validate"
+              *ngIf="editForm.get('rentType').invalid && editForm.get('rentType').touched">
+            Vui lòng chọn kiểu thuê!
+          </span>
       </div>
 
     </div>
     <div class="col-3">
       <div class="form-group" id="description">
         <label>Description Other Convenience: </label>
-        <input type="text" class="form-control"
-               placeholder="Enter description...">
+        <input formControlName="description" name="description" type="text" class="form-control"/>
+        <span class="validate"
+              *ngIf="editForm.get('description').invalid && editForm.get('description').touched">
+            Mô tả tiện nghi không được để trống!
+          </span>
       </div>
 
     </div>
@@ -77,28 +109,49 @@
     <div class="col-3">
       <div class="form-group" id="standardRoom">
         <label>Standard Room: </label>
-        <input type="text" class="form-control" placeholder="Enter standard room...">
+        <input formControlName="standardRoom" name="standardRoom" type="text" class="form-control"/>
+        <span class="validate"
+              *ngIf="editForm.get('standardRoom').invalid && editForm.get('standardRoom').touched">
+            Tiêu chuẩn không được để trống!
+          </span>
       </div>
 
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Max People</label>
-        <input type="number" class="form-control"/>
+        <input formControlName="maxPeople" name="maxPeople" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="editForm.get('maxPeople').invalid && editForm.get('maxPeople').touched">
+          <span *ngIf="editForm.get('maxPeople').hasError('required')">Vui lòng nhập lương</span>
+          <span
+            *ngIf="editForm.get('maxPeople').hasError('min')">Số người phải là số dương</span>
+        </div>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Cost</label>
-        <input type="number" class="form-control"/>
+        <input formControlName="cost" name="cost" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="editForm.get('cost').invalid && editForm.get('cost').touched">
+          <span *ngIf="editForm.get('cost').hasError('required')">Vui lòng giá dịch vụ</span>
+          <span
+            *ngIf="editForm.get('cost').hasError('min')">Giá phải là số dương</span>
+        </div>
       </div>
 
     </div>
     <div class="col-3">
       <div class="form-group" id="floors">
         <label>Number Of Floors: </label>
-        <input type="number" class="form-control"
-               placeholder="Enter number of floors... ">
+        <input formControlName="numberOfFloors" name="numberOfFloors" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="editForm.get('numberOfFloors').invalid && editForm.get('numberOfFloors').touched">
+          <span *ngIf="editForm.get('numberOfFloors').hasError('required')">Vui lòng nhập số tầng</span>
+          <span
+            *ngIf="editForm.get('numberOfFloors').hasError('min')">Số tầng phải là số dương</span>
+        </div>
       </div>
     </div>
   </div>
@@ -147,3 +200,4 @@
     <div class="col-1"></div>
   </div>
 </form>
+<app-footer></app-footer>

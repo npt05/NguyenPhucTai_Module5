@@ -1,4 +1,4 @@
 export interface Division {
   id?: number;
-  name?: String;
+  name?: string;
 }

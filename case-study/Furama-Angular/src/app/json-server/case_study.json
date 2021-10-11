@@ -37,20 +37,6 @@
       "address": "Huế"
     },
     {
-      "id": 4,
-      "code": "KH-0004",
-      "customerType": {
-        "id": 3,
-        "name": "Gold"
-      },
-      "name": "Liên Giang",
-      "birthday": "2021-07-08",
-      "idCard": "123456789",
-      "phone": "0912345678",
-      "email": "linh12@gmail.com",
-      "address": "Huế"
-    },
-    {
       "code": "KH-0007",
       "name": "Nguyen Phuc Tai",
       "birthday": "2021-10-09",
@@ -77,20 +63,6 @@
       "email": "sdg@gmail.com",
       "address": "Quan Lien Chieu",
       "id": 6
-    },
-    {
-      "code": "KH-0009",
-      "name": "Nguyen Phuc Tai",
-      "birthday": "2021-10-16",
-      "customerType": {
-        "id": 3,
-        "name": "Gold"
-      },
-      "idCard": "123456789",
-      "phone": "0773388980",
-      "email": "sags@gmail.com",
-      "address": "Quan Lien Chieu",
-      "id": 7
     }
   ],
   "position": [
@@ -199,28 +171,100 @@
       "phone": "0987654567",
       "email": "chidieu@gmail.com",
       "address": "Hà Nội"
+    }
+  ],
+  "service": [
+    {
+      "id": 1,
+      "name": "Vip1",
+      "code": "DV-0001",
+      "maxPeople": 7,
+      "description": "Drink Free",
+      "standardRoom": "5Sao",
+      "numberOfFloors": 3,
+      "area": 50,
+      "rentType": {
+        "id": 1,
+        "name": "Day"
+      },
+      "serviceType": {
+        "id": 3,
+        "name": "House"
+      },
+      "poolArea": 7,
+      "cost": 2000000
+    },
+    {
+      "id": 2,
+      "name": "Vip2",
+      "code": "DV-0002",
+      "maxPeople": 8,
+      "description": "Drink Free",
+      "standardRoom": "5Sao",
+      "numberOfFloors": 2,
+      "area": 57,
+      "rentType": {
+        "id": 2,
+        "name": "Month"
+      },
+      "serviceType": {
+        "id": 2,
+        "name": "Room"
+      },
+      "poolArea": 9,
+      "cost": 4100000
     },
     {
       "id": 3,
-      "name": "Hải Đăng",
-      "position": {
-        "id": 5,
-        "name": "Quản lý"
+      "name": "Vip3",
+      "code": "DV-0003",
+      "maxPeople": 3,
+      "description": "Drink Free",
+      "standardRoom": "5Sao",
+      "numberOfFloors": 1,
+      "area": 37,
+      "rentType": {
+        "id": 1,
+        "name": "Day"
       },
-      "education": {
-        "id": 3,
-        "name": "đại học"
+      "serviceType": {
+        "id": 1,
+        "name": "Villa"
       },
-      "division": {
-        "id": 3,
-        "name": "Quản lý"
-      },
-      "birthday": "1997-02-24",
-      "idCard": "123456789",
-      "salary": "6000000",
-      "phone": "0987654567",
-      "email": "haidang@gmail.com",
-      "address": "Đà Nẵng"
+      "poolArea": 8,
+      "cost": 2400000
+    }
+  ],
+  "renType": [
+    {
+      "id": 1,
+      "name": "Day"
+    },
+    {
+      "id": 2,
+      "name": "Month"
+    },
+    {
+      "id": 3,
+      "name": "Year"
+    },
+    {
+      "id": 4,
+      "name": "Hour"
+    }
+  ],
+  "serviceType": [
+    {
+      "id": 1,
+      "name": "Villa"
+    },
+    {
+      "id": 2,
+      "name": "Room"
+    },
+    {
+      "id": 3,
+      "name": "House"
     }
   ]
 }

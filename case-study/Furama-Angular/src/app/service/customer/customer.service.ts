@@ -4,7 +4,6 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 
 
-
 @Injectable({
   providedIn: 'root'
 })
@@ -34,13 +33,11 @@ export class CustomerService {
     return this.http.delete(this.API_URL + '/' + id);
   }
 
-
-  findByName(name: string): Observable<any> {
-    return this.http.get(`${this.API_URL}?name_like=${name}`);
+  searchByName(nameCustomer?:string): Observable<Customer[] | any>{
+    return this.http.get(this.API_URL + '?name_like=' + nameCustomer);
   }
 
-  public search(name: string, customerTypeName: string): Observable<Customer[]> {
-    return this.http.get<Customer[]>(this.API_URL + "?name_like=" + name + "&customerType.name=" + customerTypeName);
+  search(nameCustomer?: string, customerTypeName?: string): Observable<Customer[] | any> {
+    return this.http.get(this.API_URL + '?name_like=' + nameCustomer + '&customerType.name=' + customerTypeName);
   }
-
 }

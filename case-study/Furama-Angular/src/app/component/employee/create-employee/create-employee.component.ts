@@ -8,6 +8,7 @@ import {Education} from '../../../../model/employee/Education';
 import {Division} from '../../../../model/employee/Division';
 import {Position} from '../../../../model/employee/Position';
 import {DivisionService} from '../../../service/employee/divition.service';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-employee',
@@ -25,7 +26,8 @@ export class CreateEmployeeComponent implements OnInit {
               private divisionService: DivisionService,
               private educationService: EducationService,
               private employeeService: EmployeeService,
-              private router: Router) {}
+              private router: Router,
+              private snackBar: MatSnackBar) {}
 
   ngOnInit(): void {
     this.employeeFormGroup = this.formBuilder.group({
@@ -59,9 +61,13 @@ export class CreateEmployeeComponent implements OnInit {
     if (this.employeeFormGroup.valid) {
       const employee = this.employeeFormGroup.value;
       this.employeeService.save(employee).subscribe(() => {
+        this.snackBar.open("New customer created.", "Close", {
+          duration: 3000,
+          verticalPosition: 'top',
+          panelClass: 'blue-snackbar'
+        } )
         this.employeeFormGroup.reset();
         this.router.navigateByUrl("/employee");
-        alert('Tạo thành công');
       }, e => {
         console.log(e);
       });

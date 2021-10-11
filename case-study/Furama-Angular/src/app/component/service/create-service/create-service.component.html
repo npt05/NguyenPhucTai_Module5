@@ -1,13 +1,10 @@
-
-
-
-<form  method="post">
+<app-navbar></app-navbar>
+<form [formGroup]="serviceFormGroup" (ngSubmit)="onSubmit()">
   <div class="row">
     <div class="col-3"></div>
     <div class=" col-6">
       <div class="alert alert-primary " role="alert" STYLE="text-align: center">
         <h4>CREATE SERVICE INFORMATION</h4>
-
       </div>
     </div>
     <div class=" col-3"></div>
@@ -17,27 +14,45 @@
     <div class="col-3">
       <div class="form-group">
         <label>Service Name</label>
-        <input type="text"/>
+        <input formControlName="name" type="text" class="form-control"/>
+        <span class="validate" *ngIf="serviceFormGroup.get('name').invalid && serviceFormGroup.get('name').touched">
+            Tên dịch vụ không được để trống!
+          </span>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
-        <label>Service Type </label>
-        <select class="form-control">
+        <label>Service Type</label>
+        <select class="form-control" formControlName="serviceType">
+          <option *ngFor="let serviceType of serviceTypes" [ngValue]="serviceType">{{serviceType.name}}</option>
         </select>
+        <span class="validate"
+              *ngIf="serviceFormGroup.get('serviceType').invalid && serviceFormGroup.get('serviceType').touched">
+            Vui lòng chọn loại dịch vụ!
+          </span>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Rent Type </label>
-        <select class="form-control">
+        <select class="form-control" formControlName="rentType">
+          <option *ngFor="let renType of renTypes" [ngValue]="renType">{{renType.name}}</option>
         </select>
+        <span class="validate"
+              *ngIf="serviceFormGroup.get('rentType').invalid && serviceFormGroup.get('rentType').touched">
+            Vui lòng chọn kiểu thuê!
+          </span>
       </div>
     </div>
     <div class="col-3">
       <div class="form-group">
         <label>Service Code</label>
-        <input type="text" class="form-control"/>
+        <input type="text" formControlName="code" class="form-control"/>
+        <div class="validate" *ngIf="serviceFormGroup.get('code').invalid && serviceFormGroup.get('code').touched">
+          <span *ngIf="serviceFormGroup.get('code').hasError('required')">Vui lòng nhập mã dịch vụ!</span>
+          <span
+            *ngIf="serviceFormGroup.get('code').hasError('pattern')">Mã dịch vụ không đúng định dạng(DV-XXXX)!</span>
+        </div>
       </div>
     </div>
   </div>
@@ -46,20 +61,35 @@
     <div class="col-3">
       <div class="form-group" id="description">
         <label>Description Other Convenience: </label>
-        <input type="text" class="form-control"
-               placeholder="Enter description...">
+        <input formControlName="description" type="text" class="form-control"/>
+        <span class="validate"
+              *ngIf="serviceFormGroup.get('description').invalid && serviceFormGroup.get('description').touched">
+            Mô tả tiện nghi không được để trống!
+          </span>
       </div>
     </div>
     <div class="col-4">
       <div class="form-group">
         <label>Service Cost</label>
-        <input type="number" class="form-control"/>
+        <input formControlName="cost" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="serviceFormGroup.get('cost').invalid && serviceFormGroup.get('cost').touched">
+          <span *ngIf="serviceFormGroup.get('cost').hasError('required')">Vui lòng giá dịch vụ</span>
+          <span
+            *ngIf="serviceFormGroup.get('cost').hasError('min')">Giá phải là số dương</span>
+        </div>
       </div>
     </div>
     <div class="col-3">
       <div class="form-group">
         <label>Pool Area: </label>
-        <input type="number" class="form-control" placeholder="Enter pool area... ">
+        <input formControlName="poolArea" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="serviceFormGroup.get('poolArea').invalid && serviceFormGroup.get('poolArea').touched">
+          <span *ngIf="serviceFormGroup.get('poolArea').hasError('required')">Vui lòng nhập diện tích hồ bơi</span>
+          <span
+            *ngIf="serviceFormGroup.get('poolArea').hasError('min')">Diện tích phải là số dương</span>
+        </div>
       </div>
     </div>
   </div>
@@ -68,30 +98,49 @@
     <div class="col-3">
       <div class="form-group" id="standardRoom">
         <label>Standard Room: </label>
-        <input type="text" class="form-control" placeholder="Enter standard room...">
+        <input formControlName="standardRoom" type="text" class="form-control"/>
+        <span class="validate"
+              *ngIf="serviceFormGroup.get('standardRoom').invalid && serviceFormGroup.get('standardRoom').touched">
+            Tiêu chuẩn không được để trống!
+          </span>
       </div>
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Area </label>
-        <input type="number" class="form-control" />
+        <input formControlName="area" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="serviceFormGroup.get('area').invalid && serviceFormGroup.get('area').touched">
+          <span *ngIf="serviceFormGroup.get('area').hasError('required')">Vui lòng nhập diện tích sử dụng</span>
+          <span
+            *ngIf="serviceFormGroup.get('area').hasError('min')">Diện tích phải là số dương</span>
+        </div>
       </div>
 
     </div>
     <div class="col-2">
       <div class="form-group">
         <label>Service Max People</label>
-        <input type="number" class="form-control"/>
-
+        <input formControlName="maxPeople" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="serviceFormGroup.get('maxPeople').invalid && serviceFormGroup.get('maxPeople').touched">
+          <span *ngIf="serviceFormGroup.get('maxPeople').hasError('required')">Vui lòng nhập lương</span>
+          <span
+            *ngIf="serviceFormGroup.get('maxPeople').hasError('min')">Số người phải là số dương</span>
+        </div>
       </div>
 
     </div>
     <div class="col-3">
       <div class="form-group" id="floors">
         <label>Number Of Floors: </label>
-        <input type="number" class="form-control"
-               placeholder="Enter number of floors... ">
-
+        <input formControlName="numberOfFloors" type="number" class="form-control">
+        <div class="validate"
+             *ngIf="serviceFormGroup.get('numberOfFloors').invalid && serviceFormGroup.get('numberOfFloors').touched">
+          <span *ngIf="serviceFormGroup.get('numberOfFloors').hasError('required')">Vui lòng nhập số tầng</span>
+          <span
+            *ngIf="serviceFormGroup.get('numberOfFloors').hasError('min')">Số tầng phải là số dương</span>
+        </div>
       </div>
     </div>
   </div>
@@ -118,7 +167,8 @@
           <button type="button" class="btn btn-secondary my-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" fill="currentColor"
                  class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-              <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
+              <path
+                d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"/>
               <path fill-rule="evenodd"
                     d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"/>
             </svg>
@@ -128,7 +178,7 @@
 
       </div>
       <div style="display: inline-block; margin-left: 505px">
-        <a>
+        <a routerLink="/service">
 
           <button type="button" class="btn btn-warning my-1">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -144,3 +194,4 @@
     <div class="col-1"></div>
   </div>
 </form>
+<app-footer></app-footer>

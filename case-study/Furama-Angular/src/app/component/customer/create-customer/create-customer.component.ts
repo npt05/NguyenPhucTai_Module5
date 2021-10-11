@@ -4,6 +4,7 @@ import {CustomerTypeService} from '../../../service/customer-type/customer-type.
 import {CustomerService} from '../../../service/customer/customer.service';
 import {Router} from '@angular/router';
 import {CustomerType} from '../../../../model/customer/CustomerType';
+import {MatSnackBar} from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-create-customer',
@@ -17,7 +18,8 @@ export class CreateCustomerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,
               private customerTypeService: CustomerTypeService,
               private customerService: CustomerService,
-              private router: Router) { }
+              private router: Router,
+              private snackBar: MatSnackBar) { }
   ngOnInit(): void {
     this.customerFormGroup = this.formBuilder.group({
       code: ['', [Validators.required, Validators.pattern('^KH-\\d{4}$')]],
@@ -42,9 +44,13 @@ export class CreateCustomerComponent implements OnInit {
     if (this.customerFormGroup.valid) {
       const customer = this.customerFormGroup.value;
       this.customerService.save(customer).subscribe(() => {
+        this.snackBar.open("New customer created.", "Close", {
+          duration: 3000,
+          verticalPosition: 'top',
+          panelClass: 'blue-snackbar'
+        } )
         this.customerFormGroup.reset();
         this.router.navigateByUrl("/customer");
-        alert('Tạo thành công');
       }, e => {
         console.log(e);
       });

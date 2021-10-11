@@ -27,13 +27,15 @@ import {MatDialogModule} from '@angular/material/dialog';
 import { DeleteCustomerComponent } from './component/customer/delete-customer/delete-customer.component';
 import {ToastrModule} from 'ngx-toastr';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { DeleteEmployeeComponent } from './component/employee/delete-employee/delete-employee.component';
+import {DeleteEmployeeComponent } from './component/employee/delete-employee/delete-employee.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { DeleteServiceComponent } from './component/service/delete-service/delete-service.component';
+import { ViewServiceComponent } from './component/service/view-service/view-service.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
     CreateContractComponent,
     EditContractComponent,
     ListContractComponent,
@@ -52,7 +54,9 @@ import { DeleteEmployeeComponent } from './component/employee/delete-employee/de
     FooterComponent,
     BodyComponent,
     DeleteCustomerComponent,
-    DeleteEmployeeComponent
+    DeleteEmployeeComponent,
+    DeleteServiceComponent,
+    ViewServiceComponent
   ],
   imports: [
     BrowserModule,
@@ -63,7 +67,8 @@ import { DeleteEmployeeComponent } from './component/employee/delete-employee/de
     ToastrModule.forRoot(),
     MatDialogModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

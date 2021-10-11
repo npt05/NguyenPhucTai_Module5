@@ -1,6 +1,6 @@
 export interface ServiceType{
   id?: number;
-  name?: String;
+  name?: string;
 
 
 }

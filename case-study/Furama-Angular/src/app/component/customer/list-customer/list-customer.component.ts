@@ -12,9 +12,9 @@ import {CustomerService} from '../../../service/customer/customer.service';
   styleUrls: ['./list-customer.component.css']
 })
 export class ListCustomerComponent implements OnInit {
-  p: number;
-  customerName = '';
-  customerTypeName = '';
+  p: number = 1;
+  customerName?: string = '';
+  customerTypeName?: string = '';
   customers: Customer[] | any;
   customerTypes: CustomerType[];
 
@@ -25,7 +25,7 @@ export class ListCustomerComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAll();
-
+    this.p = 1;
   }
 
   getAll() {
@@ -36,10 +36,19 @@ export class ListCustomerComponent implements OnInit {
       });
     });
   }
+
   search() {
-    this.customerService.search(this.customerName, this.customerTypeName).subscribe(customer => {
-      this.customers = customer;
-    });
+    if (this.customerTypeName === "") {
+      this.customerService.searchByName(this.customerName).subscribe(data => {
+        this.customers = data;
+        this.p = 1;
+      });
+    } else {
+      this.customerService.search(this.customerName, this.customerTypeName).subscribe(customer => {
+        this.customers = customer;
+        this.p = 1;
+      });
+    }
   }
 
 

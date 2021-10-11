@@ -1,9 +1,9 @@
 <app-navbar></app-navbar>
-<div>
+<div style="margin-top: 20px">
   <div>
-    <div style=" display:inline-block;  margin-left: 105px; margin-bottom: 5px">
+    <div style=" display:inline-block;  margin-left: 105px">
       <a routerLink="/customer/create">
-        <button type="button" class="btn btn-success my-2 my-sm-0" style="color: white">
+        <button type="button" class="btn btn-success " style="color: white">
           <svg xmln="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi
                     bi-pencil-square" viewBox="0 0 16 16">
             <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75
@@ -17,13 +17,13 @@
         </button>
       </a>
     </div>
-    <div style="margin-left: 200px; display: inline-block">
-      <select  [(ngModel)]="customerTypeName" style="width: 170px;">
-        <option [ngValue]="">--bấm chọn---</option>
+    <div style="margin-left: 675px; display: inline-block">
+      <select class="btn-sm" [(ngModel)]="customerTypeName" style="width: 185px;">
+        <option  value="">--Chọn customerType--</option>
         <option *ngFor="let customerType of customerTypes" [ngValue]="customerType.name">{{customerType.name}}</option>
       </select>
-      <input type="text"  placeholder="name search" [(ngModel)]="customerName">
-      <button (click)="search()">
+      <input class="btn-sm" type="text"  placeholder="name search" [(ngModel)]="customerName">
+      <button type="button" class="btn btn-primary " (click)="search()">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
              viewBox="0 0 16 16">
           <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -50,8 +50,8 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let customer of customers;let i=  index" style="text-align: center">
-          <td>{{i+1}}</td>
+        <tr *ngFor="let customer of customers  | paginate: {itemsPerPage: 2, currentPage: p} ;let i = index" style="text-align: center">
+          <td>{{p*2+i-1}}</td>
           <td>{{customer.code}}</td>
           <td>{{customer.customerType.name}}</td>
           <td>{{customer.name}}</td>
@@ -88,8 +88,8 @@
         </tr>
         </tbody>
       </table>
+      <pagination-controls (pageChange)="p = $event" class="text-center"></pagination-controls>
     </div>
   </div>
 </div>
-
 <app-footer></app-footer>

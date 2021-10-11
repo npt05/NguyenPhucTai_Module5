@@ -1,19 +1,19 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material/dialog';
-import {EmployeeService} from '../../../service/employee/employee.service';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import {ServiceService} from '../../../service/service/service.service';
 
 @Component({
-  selector: 'app-delete-employee',
-  templateUrl: './delete-employee.component.html',
-  styleUrls: ['./delete-employee.component.css']
+  selector: 'app-delete-service',
+  templateUrl: './delete-service.component.html',
+  styleUrls: ['./delete-service.component.css']
 })
-export class DeleteEmployeeComponent implements OnInit {
-  employeeName;
-  employeeId;
+export class DeleteServiceComponent implements OnInit {
+  serviceName;
+  serviceId;
   constructor(
-    private employeeService: EmployeeService,
-    public dialogRef: MatDialogRef<DeleteEmployeeComponent>,
+    private serviceService:ServiceService,
+    public dialogRef: MatDialogRef<DeleteServiceComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
     private matSnackBar: MatSnackBar) {}
 
@@ -22,11 +22,11 @@ export class DeleteEmployeeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.employeeName = this.data.employee.name;
-    this.employeeId = this.data.employee.id;
+    this.serviceName = this.data.service.name;
+    this.serviceId = this.data.service.id;
   }
   delete() {
-    this.employeeService.delete(this.employeeId).subscribe(data => {
+    this.serviceService.delete(this.serviceId).subscribe(data => {
       this.dialogRef.close();
       this.matSnackBar.open("Delete thành công", "OK", {
         duration: 3500,

@@ -4,12 +4,11 @@ import {Service} from '../service/Service';
 
 export interface Contract{
   id?: number;
-  contractStartDate?: String;
-  contractEndDate?: String;
-  contractDeposit?: String;
-  contractTotalMoney?: String;
+  contractStartDate?: string;
+  contractEndDate?: string;
+  contractDeposit?: string;
+  contractTotalMoney?: string;
   customer?: Customer;
   employee?: Employee;
   service?: Service;
-
 }

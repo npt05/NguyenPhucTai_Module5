@@ -1,6 +1,6 @@
 export interface RenType{
   id?: number;
-  name?: String;
+  name?: string;
 
 
 }

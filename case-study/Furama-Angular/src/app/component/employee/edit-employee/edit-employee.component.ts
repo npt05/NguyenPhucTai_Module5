@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Position} from '../../../../model/employee/Position';
 import {Education} from '../../../../model/employee/Education';
 import {Division} from '../../../../model/employee/Division';
-import {CustomerService} from '../../../service/customer/customer.service';
 import {ActivatedRoute, ParamMap, Router} from '@angular/router';
-import {CustomerTypeService} from '../../../service/customer-type/customer-type.service';
 import {PositionService} from '../../../service/employee/position.service';
 import {DivisionService} from '../../../service/employee/divition.service';
 import {EducationService} from '../../../service/employee/education.service';
@@ -53,7 +51,7 @@ export class EditEmployeeComponent implements OnInit {
     });
   }
 
-  private getEmployee(id: number) {
+  getEmployee(id: number) {
     return this.employeeService.findById(id).subscribe(employee => {
       this.editForm = this.formBuilder.group({
         id: [employee.id],
@@ -75,7 +73,7 @@ export class EditEmployeeComponent implements OnInit {
     if (this.editForm.valid) {
       const employee = this.editForm.value;
       this.employeeService.update(id, employee).subscribe(() => {
-        this.router.navigateByUrl("/employee");
+        this.router.navigateByUrl('/employee');
         alert('Cập nhật thành công');
       }, e => {
         console.log(e);

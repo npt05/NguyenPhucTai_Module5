@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Employee} from "../../../../model/employee/Employee";
-
 import {EmployeeService} from '../../../service/employee/employee.service';
-import {DeleteCustomerComponent} from '../../customer/delete-customer/delete-customer.component';
 import {MatDialog} from '@angular/material/dialog';
 import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.component';
 
@@ -13,13 +11,15 @@ import {DeleteEmployeeComponent} from '../delete-employee/delete-employee.compon
 })
 export class ListEmployeeComponent implements OnInit {
 
-
+  p: number =1 ;
   employees: Employee[];
+  employeeName?: string;
   constructor(private employeeService: EmployeeService,
               public dialog: MatDialog) {
   }
   ngOnInit(){
     this.getAll();
+    this.p = 1;
   }
   getAll() {
     this.employeeService.getAll().subscribe(employees => {
@@ -39,7 +39,13 @@ export class ListEmployeeComponent implements OnInit {
       dialogRef.afterClosed().subscribe(result => {
         console.log('The dialog was closed');
         this.ngOnInit();
+
       });
+    });
+  }
+  search() {
+    this.employeeService.search(this.employeeName).subscribe(employee => {
+      this.employees = employee;
     });
   }
 }
